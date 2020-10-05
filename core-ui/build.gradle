@@ -35,6 +35,8 @@ dependencies {
     api uiDependencies.material
     api uiDependencies.glide
     api uiDependencies.circleImageView
+    api uiDependencies.navigation
+    api uiDependencies.navigationUi
 
     implementation kotlinDependencies.coreKtx
 

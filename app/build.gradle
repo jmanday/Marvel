@@ -36,8 +36,6 @@ dependencies {
     implementation supportDependencies.appCompat
     implementation supportDependencies.legacySupoort
 
-    implementation uiDependencies.constraintLayout
-
     implementation lifecycleDependencies.lifecycleExtensions
     implementation lifecycleDependencies.lifecycleViewModel
 

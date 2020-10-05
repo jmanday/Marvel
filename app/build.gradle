@@ -39,6 +39,8 @@ dependencies {
     implementation lifecycleDependencies.lifecycleExtensions
     implementation lifecycleDependencies.lifecycleViewModel
 
+    api uiDependencies.navigationUi
+
     implementation project(':core-ui')
 
     testImplementation 'junit:junit:4.12'

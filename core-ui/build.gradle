@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply from: '../dependencies.gradle'
@@ -8,13 +8,13 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.example.bestbuy"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -23,25 +23,24 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
-    viewBinding.enabled = true
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-    implementation kotlinDependencies.kotlin
+    api uiDependencies.constraintLayout
+    api uiDependencies.shimmerRecyclerview
+    api uiDependencies.shimmer
+    api uiDependencies.material
+    api uiDependencies.glide
+    api uiDependencies.circleImageView
+    api uiDependencies.navigation
+    api uiDependencies.navigationUi
+
     implementation kotlinDependencies.coreKtx
 
     implementation supportDependencies.appCompat
-    implementation supportDependencies.legacySupoort
-
-    implementation lifecycleDependencies.lifecycleExtensions
-    implementation lifecycleDependencies.lifecycleViewModel
-
-    api uiDependencies.navigationUi
-
-    implementation project(':core-ui')
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

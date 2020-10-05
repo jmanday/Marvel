@@ -1,0 +1,42 @@
+ext {
+    //Versions
+    supportLibrary = '26.1.0'
+    kotlin_version = "1.3.72"
+    core_ktx = "1.3.2"
+    app_compat = "1.2.0"
+    legacy = "1.0.0"
+    constraint_layout = "2.0.1"
+    lifecyle = "2.2.0"
+    shimmmer_recycler_view = "0.4.0"
+    material = "1.3.0-alpha03"
+    glide = "4.9.0"
+    cirle_image_view = "3.1.0"
+    navigation = "2.2.1"
+
+    //Dependencies
+    kotlinDependencies = [
+            kotlin           :         "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+            coreKtx          :         "androidx.core:core-ktx:$core_ktx",
+    ]
+
+    supportDependencies = [
+            appCompat        :         "androidx.appcompat:appcompat:$app_compat",
+            legacySupoort    :         "androidx.legacy:legacy-support-v4:$legacy"
+    ]
+
+    uiDependencies = [
+            constraintLayout :         "androidx.constraintlayout:constraintlayout:$constraint_layout",
+            shimmerRecyclerview:       "com.todkars:shimmer-recyclerview:$shimmmer_recycler_view",
+            shimmer          :         "com.facebook.shimmer:shimmer:$shimmmer_recycler_view",
+            material         :         "com.google.android.material:material:$material",
+            glide            :         "com.github.bumptech.glide:glide:$glide",
+            circleImageView  :         "de.hdodenhof:circleimageview:$cirle_image_view",
+            navigation       :         "androidx.navigation:navigation-fragment-ktx:$navigation",
+            navigationUi     :         "androidx.navigation:navigation-ui-ktx:$navigation",
+    ]
+
+    lifecycleDependencies = [
+            lifecycleExtensions :      "androidx.lifecycle:lifecycle-extensions:$lifecyle",
+            lifecycleViewModel  :      "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecyle",
+    ]
+}

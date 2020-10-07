@@ -33,10 +33,17 @@ dependencies {
 
     implementation supportDependencies.appCompat
 
-    implementation dataDependencies.retrofit
-    implementation lifecycleDependencies.lifecycleLiveData
-    implementation lifecycleDependencies.lifecycleViewModel
-    implementation lifecycleDependencies.lifecycleRuntime
+    api dataDependencies.retrofit
+
+    api lifecycleDependencies.lifecycleLiveData
+    api lifecycleDependencies.lifecycleViewModel
+    api lifecycleDependencies.lifecycleRuntime
+
+    api koinDependencies.scope
+    api koinDependencies.viewmodel
+    api koinDependencies.fragment
+    api koinDependencies.architecture
+    api koinDependencies.ext
 
     testImplementation 'junit:junit:4.12'
 

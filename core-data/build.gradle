@@ -33,7 +33,10 @@ dependencies {
 
     implementation supportDependencies.appCompat
 
-    implementation dataDependencies.retrofit
+    api dataDependencies.retrofit
+    api dataDependencies.retrofitGson
+    api dataDependencies.gson
+
     implementation lifecycleDependencies.lifecycleLiveData
     implementation lifecycleDependencies.lifecycleViewModel
     implementation lifecycleDependencies.lifecycleRuntime

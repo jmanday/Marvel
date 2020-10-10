@@ -1,9 +1,9 @@
-package com.example.bestbuy.datasource
+package com.example.bestbuy.data.datasource
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.bestbuy.data.ProductResponseEntity
-import com.example.bestbuy.datasource.net.ProductApi
+import com.example.bestbuy.data.datasource.net.ProductApi
 import com.example.core_data.RetrofitController
 import retrofit2.Call
 import retrofit2.Callback

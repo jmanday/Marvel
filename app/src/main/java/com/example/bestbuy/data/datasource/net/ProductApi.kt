@@ -1,4 +1,4 @@
-package com.example.bestbuy.datasource.net
+package com.example.bestbuy.data.datasource.net
 
 import com.example.bestbuy.data.ProductResponseEntity
 import retrofit2.Call

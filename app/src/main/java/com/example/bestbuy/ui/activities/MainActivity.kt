@@ -1,4 +1,4 @@
-package com.example.bestbuy.ui
+package com.example.bestbuy.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

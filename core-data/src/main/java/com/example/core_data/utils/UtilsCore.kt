@@ -1,4 +1,4 @@
-package com.example.core_data
+package com.example.core_data.utils
 
 import androidx.lifecycle.*
 import kotlinx.coroutines.CoroutineScope

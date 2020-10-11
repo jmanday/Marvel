@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.bestbuy.data.ProductEntity
 import com.example.bestbuy.data.ProductResponse
 import com.example.bestbuy.data.datasource.net.ProductApi
-import com.example.core_data.BASE_URL
+import com.example.core_data.utils.BASE_URL
 import com.example.core_data.RetrofitController
 import com.example.core_data.RetrofitController.unwrapResponse
 import retrofit2.Call

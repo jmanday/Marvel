@@ -1,5 +1,6 @@
 package com.example.core_data
 
+import com.example.core_data.utils.client
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

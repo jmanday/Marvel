@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.bestbuy.databinding.FragmentProductListBinding
+import com.example.bestbuy.ui.adapters.ProductAdapter
 import com.example.bestbuy.ui.viewmodels.ProductViewModel
 
 
@@ -30,11 +31,15 @@ class ProductListFragment : BaseFragment() {
     }
 
     override fun initialize() {
+        fragmentProductListBinding.productRecyclerView.showShimmer()
         vieModel.getProducts()?.observe(this, Observer {
             it?.let {
+                val adapter = ProductAdapter(it) { product, view ->
 
+                }
+                fragmentProductListBinding.productRecyclerView.adapter = adapter
+                fragmentProductListBinding.productRecyclerView.hideShimmer()
             }
         })
-        fragmentProductListBinding.productRecyclerView.showShimmer()
     }
 }

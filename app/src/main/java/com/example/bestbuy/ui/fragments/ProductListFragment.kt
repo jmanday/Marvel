@@ -28,6 +28,7 @@ class ProductListFragment : BaseFragment() {
     }
 
     override fun initialize() {
+        vieModel.getProducts()
         fragmentProductListBinding.productRecyclerView.showShimmer()
     }
 }

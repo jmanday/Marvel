@@ -5,7 +5,7 @@ import com.example.bestbuy.data.datasource.ProductDataSource
 
 class ProductRepositoryImpl(
     private val netProductDataSource: ProductDataSource
-) : ProductRespository {
+) : ProductRepository {
 
     override fun getProducts(): LiveData<List<String>?> {
         return netProductDataSource.getProductList()

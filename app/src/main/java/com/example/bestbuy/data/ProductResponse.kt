@@ -2,7 +2,7 @@ package com.example.bestbuy.data
 
 import com.google.gson.annotations.SerializedName
 
-data class ProductResponseEntity(
+data class ProductResponse(
 
     @SerializedName("list")
     var productList: List<ProductEntity>,

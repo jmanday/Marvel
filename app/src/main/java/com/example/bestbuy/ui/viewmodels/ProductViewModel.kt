@@ -12,9 +12,8 @@ class ProductViewModel: ViewModel() {
 
     //private val productRepository: ProductRepository by inject(ProductRepository::class.java)
     private val productRepository: ProductRepository = ProductRepositoryImpl(RemoteProductDataSource())
-    var products = MutableLiveData<List<ProductEntity>>()
 
-    fun getProducts() {
+    fun getProducts() =
         productRepository.getProducts()
-    }
+
 }

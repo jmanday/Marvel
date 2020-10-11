@@ -2,8 +2,9 @@ package com.example.bestbuy.data.datasource
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.bestbuy.data.ProductResponseEntity
+import com.example.bestbuy.data.ProductResponse
 import com.example.bestbuy.data.datasource.net.ProductApi
+import com.example.core_data.BASE_URL
 import com.example.core_data.RetrofitController
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,27 +21,21 @@ class RemoteProductDataSource : ProductDataSource {
 
     override fun getProductList(): LiveData<List<String>?> {
         val data = MutableLiveData<List<String>?>()
-        val call = remoteServices?.getProducts(AUTHORIZATION)
+        val call = remoteServices?.getProducts()
 
-        call?.enqueue(object : Callback<List<ProductResponseEntity>> {
-            override fun onFailure(call: Call<List<ProductResponseEntity>>, t: Throwable) {
-                data.value = null
-            }
-
+        call?.enqueue(object : Callback<ProductResponse> {
             override fun onResponse(
-                call: Call<List<ProductResponseEntity>>,
-                response: Response<List<ProductResponseEntity>>
+                call: Call<ProductResponse>,
+                response: Response<ProductResponse>
             ) {
                 data.value = listOf()
             }
 
+            override fun onFailure(call: Call<ProductResponse>, t: Throwable) {
+                data.value = null
+            }
         })
 
         return data
-    }
-
-    companion object {
-        private const val BASE_URL = "https://bestsecret-recruitment-api.herokuapp.com/products"
-        private const val AUTHORIZATION = "ddf49ca9-44cf-4613-b218-ddc030bbfa63"
     }
 }

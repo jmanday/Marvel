@@ -1,12 +1,11 @@
 package com.example.bestbuy.data.datasource.net
 
-import com.example.bestbuy.data.ProductResponseEntity
+import com.example.bestbuy.data.ProductResponse
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Header
 
 interface ProductApi {
 
     @GET("products/")
-    fun getProducts(@Header("Authorization") contentRange: String): Call<List<ProductResponseEntity>>
+    fun getProducts(): Call<ProductResponse>
 }

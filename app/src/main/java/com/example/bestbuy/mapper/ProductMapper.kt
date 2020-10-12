@@ -4,4 +4,4 @@ import com.example.bestbuy.data.ProductEntity
 import com.example.core_domain.Product
 
 fun ProductEntity.toProduct() =
-    Product(this.id, this.image, this.price)
+    Product(id = this.id, name = this.name, image = this.image)

@@ -2,29 +2,28 @@ package com.example.bestbuy.data
 
 import com.google.gson.annotations.SerializedName
 
-data class ProductEntity(
-
+open class ProductEntity {
     @SerializedName("id")
-    var id: Int? = null,
+    var id: Int? = null
 
     @SerializedName("name")
-    var name: String? = null,
+    var name: String? = null
 
     @SerializedName("brand")
-    var brand: String? = null,
+    var brand: String? = null
 
     @SerializedName("price")
-    var price: Int? = null,
+    var price: Int? = null
 
     @SerializedName("currency")
-    var currency: String? = null,
+    var currency: String? = null
 
     @SerializedName("image")
-    var image: String? = null,
+    var image: String? = null
 
     @SerializedName("_link")
-    var _link: String? = null,
+    var _link: String? = null
 
     @SerializedName("_type")
     var _type: String? = null
-)
+}

@@ -4,9 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.bestbuy.databinding.FragmentProductDetailBinding
+import com.example.bestbuy.ui.viewmodels.ProductDetailViewModel
+import com.example.bestbuy.ui.viewmodels.ProductViewModel
 import com.example.core_ui.transitions.ContainerTransformFade
 import com.example.core_ui.transitions.TransitionAttributes
 import com.example.core_ui.transitions.TransitionMode
@@ -16,6 +21,9 @@ import org.koin.java.KoinJavaComponent
 class ProductDetailFragment : BaseFragment() {
 
     private lateinit var fragmentProductDetailBinding: FragmentProductDetailBinding
+    private val vieModel: ProductDetailViewModel by lazy {
+        ViewModelProvider(this).get(ProductDetailViewModel::class.java)
+    }
     private val args: ProductDetailFragmentArgs by navArgs()
     private val transition: TransitionMode by KoinJavaComponent.inject(ContainerTransformFade::class.java)
     private val attributes: TransitionAttributes =
@@ -35,8 +43,15 @@ class ProductDetailFragment : BaseFragment() {
     }
 
     override fun initialize() {
+        vieModel.getProductById(args.product.id ?: 0).observe(viewLifecycleOwner, Observer {
+            if (it == null) {
+                Toast.makeText(requireContext(), "No se han podido recuperar los datos del producto", Toast.LENGTH_LONG).show()
+            }
+            else {
+                fragmentProductDetailBinding.product = it
+            }
+        })
         mToolBar = fragmentProductDetailBinding.toolbar
-        fragmentProductDetailBinding.product = args.product
         fragmentProductDetailBinding.root.transitionName = args.transitionName
 
         Glide.with(requireContext())

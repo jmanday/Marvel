@@ -5,7 +5,7 @@
     <data>
         <variable
             name="product"
-            type="com.example.core_domain.Product" />
+            type="com.example.core_domain.ProductDetail" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,7 +32,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imgMain"
+            android:id="@+id/ivProduct"
             android:layout_width="250dp"
             android:layout_height="280dp"
             android:scaleType="centerCrop"
@@ -50,7 +50,7 @@
             android:layout_margin="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgMain"
+            app:layout_constraintTop_toBottomOf="@+id/ivProduct"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -102,7 +102,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorLigthGrey2"
-                    android:text="@={product.name}"
+                    android:text="@={product.brand}"
                     android:textSize="16sp"
                     android:textIsSelectable="true"
                     android:inputType="none"
@@ -132,7 +132,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorLigthGrey2"
-                    android:text="@={product.name}"
+                    android:text="@={product.description}"
                     android:textSize="16sp"
                     android:textIsSelectable="true"
                     android:inputType="none"

@@ -2,6 +2,7 @@ package com.example.bestbuy.data.datasource
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.bestbuy.data.ProductDetailEntity
 import com.example.bestbuy.data.ProductEntity
 import com.example.bestbuy.data.ProductResponse
 import com.example.bestbuy.data.datasource.net.ProductApi
@@ -36,6 +37,26 @@ class RemoteProductDataSource : ProductDataSource {
             }
 
             override fun onFailure(call: Call<ProductResponse>, t: Throwable) {
+                data.value = null
+            }
+        })
+
+        return data
+    }
+
+    override fun getProductById(idProduct: Int): LiveData<ProductDetailEntity?> {
+        val data = MutableLiveData<ProductDetailEntity?>()
+        val call = remoteServices?.getProductsById(idProduct)
+
+        call?.enqueue(object : Callback<ProductDetailEntity> {
+            override fun onResponse(
+                call: Call<ProductDetailEntity>,
+                response: Response<ProductDetailEntity>
+            ) {
+                data.value = response.body()
+            }
+
+            override fun onFailure(call: Call<ProductDetailEntity>, t: Throwable) {
                 data.value = null
             }
         })

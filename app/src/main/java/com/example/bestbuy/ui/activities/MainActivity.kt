@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import com.example.bestbuy.R
 import com.example.bestbuy.databinding.ActivityMainBinding
 import com.example.bestbuy.listener.NavigationListener
+import com.manday.coredata.navigation.Navigate
 
 class MainActivity : AppCompatActivity(), NavigationListener {
 
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity(), NavigationListener {
         super.onCreate(savedInstanceState)
 
         setContentView(ActivityMainBinding.inflate(layoutInflater).root)
+        Navigate.navController = navController
     }
 
     override fun onNavigationToDestination(actionId: Int) {

@@ -1,5 +1,6 @@
 package com.example.bestbuy.ui.fragments
 
+import android.graphics.Paint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,6 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.bestbuy.databinding.FragmentProductDetailBinding
 import com.example.bestbuy.ui.viewmodels.ProductDetailViewModel
-import com.example.bestbuy.ui.viewmodels.ProductViewModel
 import com.example.core_ui.transitions.ContainerTransformFade
 import com.example.core_ui.transitions.TransitionAttributes
 import com.example.core_ui.transitions.TransitionMode
@@ -45,10 +45,17 @@ class ProductDetailFragment : BaseFragment() {
     override fun initialize() {
         vieModel.getProductById(args.product.id ?: 0).observe(viewLifecycleOwner, Observer {
             if (it == null) {
-                Toast.makeText(requireContext(), "No se han podido recuperar los datos del producto", Toast.LENGTH_LONG).show()
-            }
-            else {
+                Toast.makeText(
+                    requireContext(),
+                    "No se han podido recuperar los datos del producto",
+                    Toast.LENGTH_LONG
+                ).show()
+            } else {
                 fragmentProductDetailBinding.product = it
+                it.discountPrice?.let {
+                    fragmentProductDetailBinding.tvPrice.setPaintFlags(fragmentProductDetailBinding.tvPrice.getPaintFlags() or Paint.STRIKE_THRU_TEXT_FLAG)
+                    //fragmentProductDetailBinding.tvPrice.setText(sampleText)
+                }
             }
         })
         mToolBar = fragmentProductDetailBinding.toolbar

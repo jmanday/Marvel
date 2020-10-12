@@ -5,6 +5,7 @@
     <string name="text_add_to_basket">Añadir al carrito</string>
     <string name="text_product_list">Productos</string>
     <string name="text_product_detail">Detalle del producto</string>
+    <string name="text_stock">Esta funcionalidad no está implementada aún</string>
     <string name="name">Nombre</string>
     <string name="brand">Marca</string>
     <string name="description">Descripción</string>

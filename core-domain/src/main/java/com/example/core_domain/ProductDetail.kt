@@ -4,8 +4,10 @@ data class ProductDetail (
     var name: String?,
     var brand: String?,
     var description: String?,
-    var price: Int?,
+    var price: Float?,
     var currency: String?,
     var discountPercentage: Int?,
-    var stock: Int?
+    var discountPrice: Float?,
+    var stock: Int?,
+    var showImageDiscount: Boolean = false
 )

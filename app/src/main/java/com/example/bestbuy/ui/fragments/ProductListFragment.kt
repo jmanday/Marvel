@@ -23,12 +23,10 @@ class ProductListFragment : BaseFragment() {
     private val vieModel: ProductViewModel by lazy {
         ViewModelProvider(this).get(ProductViewModel::class.java)
     }
-    /*
+
     private val navigateToDetailFragment: MotionNavigate<Product> by inject(
         NavigateFromProductToDetailFragment::class.java
     )
-     */
-    private val navigateToDetailFragment = NavigateFromProductToDetailFragment()
 
     override fun onCreateView(
         inflater: LayoutInflater,

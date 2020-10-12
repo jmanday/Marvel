@@ -15,9 +15,7 @@ class BestBuyApp : Application() {
         startKoin{
             androidLogger()
             androidContext(this@BestBuyApp)
-            module {
-                appModuleDependencies
-            }
+            modules(appModuleDependencies)
         }
     }
 }

@@ -5,6 +5,7 @@ import com.example.bestbuy.data.datasource.RemoteProductDataSource
 import com.example.bestbuy.navigation.NavigateFromProductToDetailFragment
 import com.example.bestbuy.repository.ProductRepositoryImpl
 import com.example.bestbuy.repository.ProductRepository
+import com.example.core_ui.transitions.ContainerTransformFade
 import org.koin.dsl.module
 
 val appModuleDependencies = module {
@@ -14,5 +15,6 @@ val appModuleDependencies = module {
 
     single<ProductRepository> { ProductRepositoryImpl(get()) }
 
+    factory { ContainerTransformFade() }
     factory { NavigateFromProductToDetailFragment() }
 }

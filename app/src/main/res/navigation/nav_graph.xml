@@ -22,5 +22,8 @@
         <argument
             android:name="product"
             app:argType="com.example.core_domain.Product" />
+        <argument
+            android:name="transitionName"
+            app:argType="string" />
     </fragment>
 </navigation>

@@ -24,6 +24,8 @@ class ProductDetailFragment : BaseFragment() {
     override fun initialize() {
         mToolBar = fragmentProductDetailBinding.toolbar
         fragmentProductDetailBinding.product = args.product
+        fragmentProductDetailBinding.root.transitionName = args.transitionName
+
         Glide.with(requireContext())
             .load(args.product.image)
             .into(fragmentProductDetailBinding.imgMain)

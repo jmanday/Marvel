@@ -10,11 +10,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.example.bestbuy.R
 import com.example.bestbuy.databinding.FragmentProductDetailBinding
 import com.example.bestbuy.ui.viewmodels.ProductDetailViewModel
 import com.example.core_ui.transitions.ContainerTransformFade
 import com.example.core_ui.transitions.TransitionAttributes
 import com.example.core_ui.transitions.TransitionMode
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialContainerTransform
 import org.koin.java.KoinJavaComponent
 
@@ -43,6 +45,15 @@ class ProductDetailFragment : BaseFragment() {
     }
 
     override fun initialize() {
+        vieModel.thereIsStock.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                Snackbar.make(fragmentProductDetailBinding.root, R.string.text_stock, Snackbar.LENGTH_SHORT)
+                    .show()
+            }
+            else {
+                Toast.makeText(requireContext(), "No quedan existencias", Toast.LENGTH_LONG).show()
+            }
+        })
         vieModel.getProductById(args.product.id ?: 0).observe(viewLifecycleOwner, Observer {
             if (it == null) {
                 Toast.makeText(
@@ -51,10 +62,10 @@ class ProductDetailFragment : BaseFragment() {
                     Toast.LENGTH_LONG
                 ).show()
             } else {
+                vieModel.selectedProduct = it
                 fragmentProductDetailBinding.product = it
                 it.discountPrice?.let {
                     fragmentProductDetailBinding.tvPrice.setPaintFlags(fragmentProductDetailBinding.tvPrice.getPaintFlags() or Paint.STRIKE_THRU_TEXT_FLAG)
-                    //fragmentProductDetailBinding.tvPrice.setText(sampleText)
                 }
             }
         })
@@ -64,6 +75,8 @@ class ProductDetailFragment : BaseFragment() {
         Glide.with(requireContext())
             .load(args.product.image)
             .into(fragmentProductDetailBinding.ivProduct)
+
+        fragmentProductDetailBinding.mbAdd.setOnClickListener { vieModel.onAddCartButtonClicked() }
     }
 
 }

@@ -9,8 +9,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.bestbuy.R
 import com.example.bestbuy.databinding.FragmentProductListBinding
+import com.example.bestbuy.navigation.NavigateFromProductToDetailFragment
 import com.example.bestbuy.ui.adapters.ProductAdapter
 import com.example.bestbuy.ui.viewmodels.ProductViewModel
+import com.example.core_domain.Product
+import com.manday.coredata.navigation.MotionNavigate
+import org.koin.java.KoinJavaComponent.inject
 
 
 class ProductListFragment : BaseFragment() {
@@ -19,6 +23,12 @@ class ProductListFragment : BaseFragment() {
     private val vieModel: ProductViewModel by lazy {
         ViewModelProvider(this).get(ProductViewModel::class.java)
     }
+    /*
+    private val navigateToDetailFragment: MotionNavigate<Product> by inject(
+        NavigateFromProductToDetailFragment::class.java
+    )
+     */
+    private val navigateToDetailFragment = NavigateFromProductToDetailFragment()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,8 +47,10 @@ class ProductListFragment : BaseFragment() {
         vieModel.getProducts().observe(this, Observer {
             it?.let {
                 val adapter = ProductAdapter(it) { product, view ->
-                    val navDirections = ProductListFragmentDirections.actionProductListFragmentToProductDetailFragment(product)
-                    navigationListener.onNavigationToNavDirections(navDirections)
+                    navigateToDetailFragment.navigate(
+                        view,
+                        product
+                    )
                 }
                 fragmentProductListBinding.productRecyclerView.adapter = adapter
                 fragmentProductListBinding.productRecyclerView.hideShimmer()

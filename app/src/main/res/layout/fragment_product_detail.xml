@@ -5,7 +5,7 @@
     <data>
         <variable
             name="product"
-            type="com.example.core_domain.Product" />
+            type="com.example.core_domain.ProductDetail" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -102,7 +102,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorLigthGrey2"
-                    android:text="@={product.name}"
+                    android:text="@={product.brand}"
                     android:textSize="16sp"
                     android:textIsSelectable="true"
                     android:inputType="none"
@@ -132,7 +132,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorLigthGrey2"
-                    android:text="@={product.name}"
+                    android:text="@={product.description}"
                     android:textSize="16sp"
                     android:textIsSelectable="true"
                     android:inputType="none"

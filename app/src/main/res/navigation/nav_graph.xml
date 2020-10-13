@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/productListFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/productListFragment"
@@ -25,5 +25,14 @@
         <argument
             android:name="transitionName"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.bestbuy.ui.fragments.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_productListFragment"
+            app:destination="@id/productListFragment" />
     </fragment>
 </navigation>

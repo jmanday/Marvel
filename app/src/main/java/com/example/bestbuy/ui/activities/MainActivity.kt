@@ -3,6 +3,7 @@ package com.example.bestbuy.ui.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavDirections
+import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.example.bestbuy.R
 import com.example.bestbuy.databinding.ActivityMainBinding
@@ -30,5 +31,13 @@ class MainActivity : AppCompatActivity(), NavigationListener {
 
     override fun onNavigationToNavDirections(navDirections: NavDirections) {
         navController.navigate(navDirections)
+    }
+
+    override fun onNavigationToDestinationFromSplash(
+        actionId: Int,
+        args: Bundle?,
+        options: NavOptions
+    ) {
+        navController.navigate(actionId, args, options)
     }
 }

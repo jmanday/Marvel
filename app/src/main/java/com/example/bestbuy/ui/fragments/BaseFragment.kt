@@ -10,7 +10,7 @@ import com.google.android.material.appbar.MaterialToolbar
 abstract class BaseFragment : Fragment() {
 
     protected lateinit var navigationListener: NavigationListener
-    protected lateinit var mToolBar: MaterialToolbar
+    protected var mToolBar: MaterialToolbar? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -22,8 +22,10 @@ abstract class BaseFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initialize()
 
-        mToolBar.setNavigationOnClickListener {
-            navigationListener.onNavigationToBack()
+        mToolBar?.let {
+            it.setNavigationOnClickListener {
+                navigationListener.onNavigationToBack()
+            }
         }
     }
 

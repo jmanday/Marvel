@@ -42,7 +42,7 @@ class ProductListFragment : BaseFragment() {
     override fun initialize() {
         mToolBar = fragmentProductListBinding.toolbar
         fragmentProductListBinding.productRecyclerView.showShimmer()
-        vieModel.getProducts().observe(this, Observer {
+        vieModel.products.observe(this, Observer {
             it?.let {
                 val adapter = ProductAdapter(it) { product, view ->
                     navigateToDetailFragment.navigate(

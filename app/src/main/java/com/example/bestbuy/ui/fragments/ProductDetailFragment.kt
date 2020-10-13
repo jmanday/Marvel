@@ -54,7 +54,8 @@ class ProductDetailFragment : BaseFragment() {
                 Toast.makeText(requireContext(), "No quedan existencias", Toast.LENGTH_LONG).show()
             }
         })
-        vieModel.getProductById(args.product.id ?: 0).observe(viewLifecycleOwner, Observer {
+        vieModel.idProduct = args.product.id ?: 0
+        vieModel.product.observe(viewLifecycleOwner, Observer {
             if (it == null) {
                 Toast.makeText(
                     requireContext(),
@@ -62,7 +63,6 @@ class ProductDetailFragment : BaseFragment() {
                     Toast.LENGTH_LONG
                 ).show()
             } else {
-                vieModel.selectedProduct = it
                 fragmentProductDetailBinding.product = it
                 it.discountPrice?.let {
                     fragmentProductDetailBinding.tvPrice.setPaintFlags(fragmentProductDetailBinding.tvPrice.getPaintFlags() or Paint.STRIKE_THRU_TEXT_FLAG)

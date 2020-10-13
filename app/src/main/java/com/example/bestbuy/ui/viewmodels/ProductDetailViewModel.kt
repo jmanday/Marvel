@@ -6,7 +6,7 @@ import com.example.core_data.utils.ExecutorViewModel
 import com.example.core_domain.ProductDetail
 import org.koin.java.KoinJavaComponent
 
-class ProductDetailViewModel : ExecutorViewModel() {
+open class ProductDetailViewModel : ExecutorViewModel() {
 
     var selectedProduct: ProductDetail? = null
     val thereIsStock = MutableLiveData<Boolean>()

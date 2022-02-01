@@ -5,12 +5,12 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import com.example.bestbuy.Constants.NAME_GENERAL_TRANSITION
 import com.example.bestbuy.ui.fragments.ProductListFragmentDirections
 import com.example.core_domain.Product
+import com.example.core_ui.models.NavigationModel
 import com.manday.coredata.navigation.MotionNavigate
-import com.manday.coredata.navigation.Navigate.Companion.navController
 
 internal class NavigateFromProductToDetailFragment : MotionNavigate<Product> {
 
-    override fun navigate(itemView: View, product: Product) {
+    override fun navigate(itemView: View, product: Product): NavigationModel {
         itemView.transitionName = itemView.transitionName ?: NAME_GENERAL_TRANSITION
         val extras = FragmentNavigatorExtras(itemView to itemView.transitionName)
         val action = ProductListFragmentDirections.actionProductListFragmentToProductDetailFragment(
@@ -18,7 +18,7 @@ internal class NavigateFromProductToDetailFragment : MotionNavigate<Product> {
             itemView.transitionName
         )
 
-        navController?.navigate(action, extras)
+        return NavigationModel(extras, action)
     }
 
 }

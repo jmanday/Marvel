@@ -1,13 +1,11 @@
 package com.example.bestbuy.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.bestbuy.R
 import com.example.bestbuy.databinding.FragmentProductListBinding
 import com.example.bestbuy.navigation.NavigateFromProductToDetailFragment
 import com.example.bestbuy.ui.adapters.ProductAdapter
@@ -32,7 +30,7 @@ class ProductListFragment : BaseFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         fragmentProductListBinding = FragmentProductListBinding.inflate(inflater)
 
@@ -45,10 +43,11 @@ class ProductListFragment : BaseFragment() {
         vieModel.products.observe(this, Observer {
             it?.let {
                 val adapter = ProductAdapter(it) { product, view ->
-                    navigateToDetailFragment.navigate(
+                    val (extras, navDirections) = navigateToDetailFragment.navigate(
                         view,
                         product
                     )
+                    onNavigationTo(navDirections, extras)
                 }
                 fragmentProductListBinding.productRecyclerView.adapter = adapter
                 fragmentProductListBinding.productRecyclerView.hideShimmer()

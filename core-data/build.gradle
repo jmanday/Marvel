@@ -48,11 +48,9 @@ dependencies {
     api lifecycleDependencies.lifecycleViewModel
     api lifecycleDependencies.lifecycleRuntime
 
-    api koinDependencies.scope
-    api koinDependencies.viewmodel
-    api koinDependencies.fragment
-    api koinDependencies.architecture
-    api koinDependencies.ext
+    api koinDependencies.core
+    api koinDependencies.android
+    api koinDependencies.javaComp
 
     testImplementation 'junit:junit:4.12'
 

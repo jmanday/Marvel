@@ -14,7 +14,7 @@ ext {
     navigation = "2.2.1"
     retrofit = "2.6.1"
     gson = "2.8.6"
-    koin = "2.1.5"
+    koin_version = "3.2.0-beta-1"
     koin_architecture = "0.8.2"
 
     //Dependencies
@@ -53,11 +53,9 @@ ext {
     ]
 
     koinDependencies = [
-            scope            :         "org.koin:koin-androidx-scope:$koin",
-            viewmodel        :         "org.koin:koin-androidx-viewmodel:$koin",
-            fragment         :         "org.koin:koin-androidx-fragment:$koin",
-            architecture     :         "org.koin:koin-android-architecture:$koin_architecture",
-            ext              :         "org.koin:koin-androidx-ext:$koin",
+            core             :         "io.insert-koin:koin-core:$koin_version",
+            android          :         "io.insert-koin:koin-android:$koin_version",
+            javaComp         :         "io.insert-koin:koin-android-compat:$koin_version",
     ]
 
 }

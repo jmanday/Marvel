@@ -22,6 +22,11 @@ class SplashFragment : BaseFragment() {
     }
 
     override fun initialize() {
+        onNavigationToDestinationFromSplash(R.id.action_splashFragment_to_productListFragment, null,
+            NavOptions.Builder()
+                .setPopUpTo(R.id.splashFragment, true)
+                .build())
+        /*
         Timer().schedule(object : TimerTask() {
             override fun run() {
                 onNavigationToDestinationFromSplash(R.id.action_splashFragment_to_productListFragment, null,
@@ -30,6 +35,7 @@ class SplashFragment : BaseFragment() {
                         .build())
             }
         }, SPLASH_DELAY)
-    }
 
+         */
+    }
 }

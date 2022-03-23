@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavOptions
+import com.example.bestbuy.R
 import com.example.bestbuy.databinding.FragmentProductListBinding
 import com.example.bestbuy.navigation.NavigateFromProductToDetailFragment
 import com.example.bestbuy.ui.adapters.ProductAdapter
@@ -39,8 +41,8 @@ class ProductListFragment : BaseFragment() {
 
     override fun initialize() {
         mToolBar = fragmentProductListBinding.toolbar
-        fragmentProductListBinding.productRecyclerView.showShimmer()
-        vieModel.products.observe(this, Observer {
+        //fragmentProductListBinding.productRecyclerView.showShimmer()
+        vieModel.products.observe(this) {
             it?.let {
                 val adapter = ProductAdapter(it) { product, view ->
                     val (extras, navDirections) = navigateToDetailFragment.navigate(
@@ -50,8 +52,8 @@ class ProductListFragment : BaseFragment() {
                     onNavigationTo(navDirections, extras)
                 }
                 fragmentProductListBinding.productRecyclerView.adapter = adapter
-                fragmentProductListBinding.productRecyclerView.hideShimmer()
+                //fragmentProductListBinding.productRecyclerView.hideShimmer()
             }
-        })
+        }
     }
 }

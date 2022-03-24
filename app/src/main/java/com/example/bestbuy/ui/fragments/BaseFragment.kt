@@ -1,32 +1,54 @@
 package com.example.bestbuy.ui.fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.example.bestbuy.listener.NavigationListener
+import androidx.navigation.*
+import androidx.navigation.fragment.FragmentNavigator
 import com.google.android.material.appbar.MaterialToolbar
 
 abstract class BaseFragment : Fragment() {
 
-    protected lateinit var navigationListener: NavigationListener
     protected var mToolBar: MaterialToolbar? = null
+    private lateinit var navController: NavController
+    //private val navController by lazy { findNavController(this) }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is NavigationListener)
-            navigationListener = context
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        navController = Navigation.findNavController(view)
         initialize()
 
         mToolBar?.let {
             it.setNavigationOnClickListener {
-                navigationListener.onNavigationToBack()
+                onNavigationToBack()
             }
         }
+    }
+
+    protected fun onNavigationToDestination(actionId: Int) {
+        navController.navigate(actionId)
+    }
+
+    protected fun onNavigationToBack() {
+        navController.navigateUp()
+    }
+
+    protected fun onNavigationTo(navDirections: NavDirections, extras: FragmentNavigator.Extras) {
+        navController.navigate(navDirections, extras)
+    }
+
+    protected fun onNavigationToNavDirections(navDirections: NavDirections) {
+        navController.navigate(navDirections)
+    }
+
+    protected fun onNavigationToDestinationFromSplash(
+        actionId: Int,
+        args: Bundle?,
+        options: NavOptions
+    ) {
+        navController.navigate(actionId, args, options)
     }
 
     protected abstract fun initialize()

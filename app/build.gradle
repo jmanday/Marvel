@@ -2,12 +2,11 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: "androidx.navigation.safeargs"
 apply from: '../dependencies.gradle'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    compileSdkVersion 31
 
     defaultConfig {
         applicationId "com.example.bestbuy"
@@ -56,6 +55,8 @@ dependencies {
     implementation project(':core-ui')
     implementation project(':core-data')
     implementation project(':core-domain')
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
 
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-core:2.23.0'

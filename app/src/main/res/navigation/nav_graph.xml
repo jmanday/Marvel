@@ -6,6 +6,15 @@
     app:startDestination="@id/splashFragment">
 
     <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.bestbuy.ui.fragments.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_productListFragment"
+            app:destination="@id/productListFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/productListFragment"
         android:name="com.example.bestbuy.ui.fragments.ProductListFragment"
         android:label="fragment_product_list"
@@ -25,14 +34,5 @@
         <argument
             android:name="transitionName"
             app:argType="string" />
-    </fragment>
-    <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.example.bestbuy.ui.fragments.SplashFragment"
-        android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
-        <action
-            android:id="@+id/action_splashFragment_to_productListFragment"
-            app:destination="@id/productListFragment" />
     </fragment>
 </navigation>

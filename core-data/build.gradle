@@ -5,13 +5,10 @@ apply from: '../dependencies.gradle'
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
 
     defaultConfig {
         minSdkVersion 23
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -51,11 +48,9 @@ dependencies {
     api lifecycleDependencies.lifecycleViewModel
     api lifecycleDependencies.lifecycleRuntime
 
-    api koinDependencies.scope
-    api koinDependencies.viewmodel
-    api koinDependencies.fragment
-    api koinDependencies.architecture
-    api koinDependencies.ext
+    api koinDependencies.core
+    api koinDependencies.android
+    api koinDependencies.javaComp
 
     testImplementation 'junit:junit:4.12'
 

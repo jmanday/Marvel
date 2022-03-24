@@ -1,27 +1,26 @@
 package com.example.bestbuy.ui.viewmodels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
+import androidx.lifecycle.*
 import com.example.bestbuy.repository.ProductRepository
 import com.example.core_data.utils.ExecutorViewModel
 import com.example.core_domain.Product
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent.inject
 
 class ProductViewModel: ExecutorViewModel() {
 
     private val productRepository: ProductRepository by inject(ProductRepository::class.java)
-    private lateinit var _products: MediatorLiveData<List<Product>>
+    private lateinit var _products: MutableLiveData<List<Product>>
 
     val products: LiveData<List<Product>>
         get() {
             if (!::_products.isInitialized) {
-                _products = MediatorLiveData()
-                _products.addSource(doInBackground {
-                    productRepository.getProducts()
-                }) {
-                    _products.value = it
+                _products = MutableLiveData()
+                viewModelScope.launch {
+                    productRepository.getProducts().collect {
+                        _products.value = it
+                    }
                 }
             }
 

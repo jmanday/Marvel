@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.core_ui.viewholder.BaseViewHolder
 
-abstract class BaseAdapter<T, VH: BaseViewHolder<T>>(private val listT: List<T>, private val listener: (T, View) -> Unit): RecyclerView.Adapter<VH>() {
+abstract class BaseAdapter<T, VH: BaseViewHolder<T>>(protected var listT: List<T>, private val listener: (T, View) -> Unit): RecyclerView.Adapter<VH>() {
 
     override fun getItemCount(): Int {
         return listT.size

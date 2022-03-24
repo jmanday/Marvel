@@ -1,12 +1,12 @@
 package com.example.bestbuy.repository
 
-import androidx.lifecycle.LiveData
 import com.example.core_domain.Product
 import com.example.core_domain.ProductDetail
+import kotlinx.coroutines.flow.Flow
 
 interface ProductRepository {
 
-    fun getProducts(): LiveData<List<Product>?>?
+    suspend fun getProducts(): Flow<List<Product>?>
 
-    fun getProductById(idProduct: Int): LiveData<ProductDetail?>?
+    fun getProductById(idProduct: Int): Flow<ProductDetail?>
 }

@@ -10,18 +10,15 @@ data class ProductResponse(
     @SerializedName("page")
     var page: Int,
 
-    @SerializedName("pageSize")
     var pageSize: Int,
-
-    @SerializedName("size")
     var size: Int,
 
     @SerializedName("_link")
-    var _link: String,
+    var link: String,
 
     @SerializedName("_type")
-    var _type: String,
+    var type: String,
 
     @SerializedName("_next")
-    var _next: String
+    var next: String
 )

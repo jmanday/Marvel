@@ -18,8 +18,8 @@ object RetrofitController {
             .build()
     }
 
-    inline fun <reified T : Any> createRequest(baseUrl: String): T? =
-        connections.get(baseUrl)?.create(T::class.java)
+    inline fun <reified T : Any> createRequest(baseUrl: String): T =
+        connections.getValue(baseUrl).create(T::class.java)
 
     inline fun <T, U> Response<T>.unwrapResponse(f: T.() -> List<U>) =
         body()?.f()

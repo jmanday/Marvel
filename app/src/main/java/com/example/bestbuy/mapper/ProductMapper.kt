@@ -4,11 +4,24 @@ import com.example.bestbuy.Constants.MIN_DISCOUNT
 import com.example.bestbuy.data.ProductDetailEntity
 import com.example.bestbuy.data.ProductEntity
 import com.example.core_domain.Product
+import com.example.bestbuy.data.datasource.db.Product as LocalProduct
 import com.example.core_domain.ProductDetail
 import java.math.BigDecimal
 import java.math.RoundingMode
 
 fun ProductEntity.toProduct() =
+    Product(id = this.id, name = this.name, image = this.image)
+
+fun ProductEntity.toLocalProduct() =
+    LocalProduct(
+        id = this.id,
+        name = this.name,
+        brand = this.brand,
+        price = this.price,
+        currency = this.currency,
+        image = this.image)
+
+fun LocalProduct.toProduct() =
     Product(id = this.id, name = this.name, image = this.image)
 
 fun ProductDetailEntity.toProductDetail(): ProductDetail {

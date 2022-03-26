@@ -1,15 +1,14 @@
-package com.example.bestbuy.data.datasource
+package com.example.bestbuy.data.datasource.net
 
 
 import com.example.bestbuy.data.ProductDetailEntity
 import com.example.bestbuy.data.ProductEntity
-import com.example.bestbuy.data.datasource.net.ProductApi
 import com.example.core_data.utils.BASE_URL
 import com.example.core_data.RetrofitController
 import com.example.core_data.RetrofitController.unwrapResponse
 
 
-class RemoteProductDataSource : ProductDataSource {
+class RetrofitDataSource: NetDataSource {
 
     private var remoteServices: ProductApi
 

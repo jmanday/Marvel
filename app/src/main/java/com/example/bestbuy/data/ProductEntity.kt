@@ -3,7 +3,7 @@ package com.example.bestbuy.data
 import com.google.gson.annotations.SerializedName
 
 open class ProductEntity {
-    var id: Int? = null
+    var id: Int = 0
     var name: String? = null
     var brand: String? = null
     var price: Int? = null

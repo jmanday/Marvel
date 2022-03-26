@@ -50,6 +50,8 @@ ext {
             retrofit            :      "com.squareup.retrofit2:retrofit:$retrofit",
             retrofitGson        :      "com.squareup.retrofit2:converter-gson:$retrofit",
             gson                :      "com.google.code.gson:gson:$gson",
+            room                :      "androidx.room:room-ktx:2.2.5",
+            kroom               :      "androidx.room:room-compiler:2.2.5",
     ]
 
     koinDependencies = [

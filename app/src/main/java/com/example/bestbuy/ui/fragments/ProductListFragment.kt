@@ -59,6 +59,7 @@ class ProductListFragment : BaseFragment() {
     override fun initialize() {
         mToolBar = fragmentProductListBinding.toolbar
         vieModel.products.observe(this) {
+            fragmentProductListBinding.progress.visibility = View.GONE
             adapter.load(it as ArrayList<Product>)
         }
     }

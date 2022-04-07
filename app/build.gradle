@@ -26,6 +26,8 @@ android {
     }
 
     def BASE_URL = "BASE_URL"
+    def APP_NAME_BEST_BUY = "BestBuy"
+    def APP_NAME_MARVEL = "Marvel"
 
     flavorDimensions "default"
     productFlavors {
@@ -33,11 +35,13 @@ android {
             dimension "default"
             applicationIdSuffix ".bestbuy"
             buildConfigField "String", BASE_URL, '"https://bestsecret-recruitment-api.herokuapp.com/"'
+            manifestPlaceholders = [appName: APP_NAME_BEST_BUY]
         }
         marvel {
             dimension "default"
             applicationIdSuffix ".marvel"
             buildConfigField "String", BASE_URL, '"http://gateway.marvel.com/v1/public/characters"'
+            manifestPlaceholders = [appName: APP_NAME_MARVEL]
         }
     }
 

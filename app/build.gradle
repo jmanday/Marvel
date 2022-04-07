@@ -9,7 +9,7 @@ android {
     compileSdkVersion 31
 
     defaultConfig {
-        applicationId "com.example.bestbuy"
+        applicationId "com.jmanday.projects"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
@@ -22,6 +22,22 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    def BASE_URL = "BASE_URL"
+
+    flavorDimensions "default"
+    productFlavors {
+        bestBuy {
+            dimension "default"
+            applicationIdSuffix ".bestbuy"
+            buildConfigField "String", BASE_URL, '"https://bestsecret-recruitment-api.herokuapp.com/"'
+        }
+        marvel {
+            dimension "default"
+            applicationIdSuffix ".marvel"
+            buildConfigField "String", BASE_URL, '"http://gateway.marvel.com/v1/public/characters"'
         }
     }
 

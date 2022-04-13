@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Marvel</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="text_add_to_basket">Añadir al carrito</string>
+    <string name="text_product_list">Personajes</string>
+    <string name="text_product_detail">Detalle del personaje</string>
+    <string name="text_stock">Esta funcionalidad no está implementada aún</string>
+    <string name="name">Nombre</string>
+    <string name="brand">Marca</string>
+    <string name="description">Descripción</string>
+</resources>

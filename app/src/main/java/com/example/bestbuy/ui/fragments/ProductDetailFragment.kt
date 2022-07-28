@@ -45,18 +45,6 @@ class ProductDetailFragment : BaseFragment() {
     }
 
     override fun initialize() {
-        /*
-        vieModel.thereIsStock.observe(viewLifecycleOwner, Observer {
-            if (it) {
-                Snackbar.make(fragmentProductDetailBinding.root, R.string.text_stock, Snackbar.LENGTH_SHORT)
-                    .show()
-            }
-            else {
-                Toast.makeText(requireContext(), "No quedan existencias", Toast.LENGTH_LONG).show()
-            }
-        })
-
-         */
         vieModel.idProduct = args.product.id ?: 0
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -67,23 +55,6 @@ class ProductDetailFragment : BaseFragment() {
                 }
             }
         }
-        /*
-        vieModel.product.observe(viewLifecycleOwner, Observer {
-            if (it == null) {
-                Toast.makeText(
-                    requireContext(),
-                    "No se han podido recuperar los datos del producto",
-                    Toast.LENGTH_LONG
-                ).show()
-            } else {
-                fragmentProductDetailBinding.product = it
-                it.discountPrice?.let {
-                    fragmentProductDetailBinding.tvPrice.setPaintFlags(fragmentProductDetailBinding.tvPrice.getPaintFlags() or Paint.STRIKE_THRU_TEXT_FLAG)
-                }
-            }
-        })
-
-         */
         mToolBar = fragmentProductDetailBinding.toolbar
         fragmentProductDetailBinding.root.transitionName = args.transitionName
 

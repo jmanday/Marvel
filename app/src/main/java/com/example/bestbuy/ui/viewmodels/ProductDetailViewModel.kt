@@ -1,44 +1,42 @@
 package com.example.bestbuy.ui.viewmodels
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
+import androidx.lifecycle.*
 import com.example.bestbuy.repository.ProductRepository
-import com.example.core_data.utils.ExecutorViewModel
 import com.example.core_domain.ProductDetail
-import org.koin.java.KoinJavaComponent
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent.inject
 
-open class ProductDetailViewModel : ExecutorViewModel() {
+open class ProductDetailViewModel : ViewModel() {
 
-    var idProduct: Int = 0
-    private lateinit var _product: MediatorLiveData<ProductDetail>
-    val thereIsStock = MutableLiveData<Boolean>()
     private val productRepository: ProductRepository by inject(ProductRepository::class.java)
-
-
-    val product: LiveData<ProductDetail>
-        get() {
-            if (!::_product.isInitialized) {
-                _product = MediatorLiveData()
-                _product.addSource(doInBackground {
-                    productRepository.getProductById(idProduct)
-                }) {
-                    _product.value = it
-                }
-
-            }
-
-            return _product
+    var idProduct: Int = 0
+        set(value) {
+            refreshUI(value)
         }
+    private var _product = MutableStateFlow(UIDetailState())
+    val product: StateFlow<UIDetailState> = _product.asStateFlow()
 
-
-    fun onAddCartButtonClicked() {
-        _product.value?.let {
-            thereIsStock.value = it.stock?.let {
-                it > 0
-            } ?: false
+    private fun refreshUI(idProduct: Int) {
+        viewModelScope.launch {
+            val product = productRepository.getProductById(idProduct).first()
+            _product.value = UIDetailState(
+                isFound = true,
+                product = product,
+                available = product?.stock?.let { it > 0 } ?: false,
+                discount = product?.discountPrice?.let { true }  ?: false
+            )
         }
     }
+
+    fun onAddCartButtonClicked() {
+
+    }
+
+    data class UIDetailState(
+        val isFound: Boolean = false,
+        val product: ProductDetail? = null,
+        val available: Boolean = false,
+        val discount: Boolean = false
+    )
 }

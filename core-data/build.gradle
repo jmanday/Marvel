@@ -43,7 +43,6 @@ dependencies {
     api dataDependencies.retrofitGson
     api dataDependencies.gson
 
-
     api lifecycleDependencies.lifecycleLiveData
     api lifecycleDependencies.lifecycleViewModel
     api lifecycleDependencies.lifecycleRuntime

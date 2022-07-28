@@ -5,19 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
-import com.example.bestbuy.R
 import com.example.bestbuy.databinding.FragmentProductDetailBinding
 import com.example.bestbuy.ui.viewmodels.ProductDetailViewModel
 import com.example.core_ui.transitions.ContainerTransformFade
 import com.example.core_ui.transitions.TransitionAttributes
 import com.example.core_ui.transitions.TransitionMode
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialContainerTransform
+import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent
 
 class ProductDetailFragment : BaseFragment() {
@@ -39,36 +36,22 @@ class ProductDetailFragment : BaseFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         fragmentProductDetailBinding = FragmentProductDetailBinding.inflate(layoutInflater)
         return fragmentProductDetailBinding.root
     }
 
     override fun initialize() {
-        vieModel.thereIsStock.observe(viewLifecycleOwner, Observer {
-            if (it) {
-                Snackbar.make(fragmentProductDetailBinding.root, R.string.text_stock, Snackbar.LENGTH_SHORT)
-                    .show()
-            }
-            else {
-                Toast.makeText(requireContext(), "No quedan existencias", Toast.LENGTH_LONG).show()
-            }
-        })
         vieModel.idProduct = args.product.id ?: 0
-        vieModel.product.observe(viewLifecycleOwner, Observer {
-            if (it == null) {
-                Toast.makeText(
-                    requireContext(),
-                    "No se han podido recuperar los datos del producto",
-                    Toast.LENGTH_LONG
-                ).show()
-            } else {
-                fragmentProductDetailBinding.product = it
-                it.discountPrice?.let {
-                    fragmentProductDetailBinding.tvPrice.setPaintFlags(fragmentProductDetailBinding.tvPrice.getPaintFlags() or Paint.STRIKE_THRU_TEXT_FLAG)
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                vieModel.product.collect {
+                    fragmentProductDetailBinding.product = it.product
+                    fragmentProductDetailBinding.tvPrice.paintFlags = if (it.discount) fragmentProductDetailBinding.tvPrice.paintFlags else Paint.STRIKE_THRU_TEXT_FLAG
+                    fragmentProductDetailBinding.mbAdd.isEnabled = it.available
                 }
             }
-        })
+        }
         mToolBar = fragmentProductDetailBinding.toolbar
         fragmentProductDetailBinding.root.transitionName = args.transitionName
 

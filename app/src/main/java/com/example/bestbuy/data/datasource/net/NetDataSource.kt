@@ -1,9 +1,9 @@
-package com.example.bestbuy.data.datasource
+package com.example.bestbuy.data.datasource.net
 
 import com.example.bestbuy.data.ProductDetailEntity
 import com.example.bestbuy.data.ProductEntity
 
-interface ProductDataSource {
+interface NetDataSource {
 
     suspend fun getProductList(): List<ProductEntity>?
 

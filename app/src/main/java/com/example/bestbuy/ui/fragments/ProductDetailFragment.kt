@@ -5,17 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.*
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
-import com.example.bestbuy.R
 import com.example.bestbuy.databinding.FragmentProductDetailBinding
 import com.example.bestbuy.ui.viewmodels.ProductDetailViewModel
 import com.example.core_ui.transitions.ContainerTransformFade
 import com.example.core_ui.transitions.TransitionAttributes
 import com.example.core_ui.transitions.TransitionMode
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialContainerTransform
 import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent

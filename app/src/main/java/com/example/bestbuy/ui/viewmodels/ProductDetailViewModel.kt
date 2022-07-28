@@ -2,41 +2,41 @@ package com.example.bestbuy.ui.viewmodels
 
 import androidx.lifecycle.*
 import com.example.bestbuy.repository.ProductRepository
-import com.example.core_data.utils.ExecutorViewModel
 import com.example.core_domain.ProductDetail
-import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import org.koin.java.KoinJavaComponent
 import org.koin.java.KoinJavaComponent.inject
 
-open class ProductDetailViewModel : ExecutorViewModel() {
+open class ProductDetailViewModel : ViewModel() {
 
-    var idProduct: Int = 0
-    private lateinit var _product: MutableLiveData<ProductDetail>
-    val thereIsStock = MutableLiveData<Boolean>()
     private val productRepository: ProductRepository by inject(ProductRepository::class.java)
-
-    val product: LiveData<ProductDetail>
-        get() {
-            if (!::_product.isInitialized) {
-                _product = MutableLiveData()
-                viewModelScope.launch {
-                    productRepository.getProductById(idProduct).collect {
-                        _product.value = it
-                    }
-                }
-
-            }
-
-            return _product
+    var idProduct: Int = 0
+        set(value) {
+            refreshUI(value)
         }
+    private var _product = MutableStateFlow(UIDetailState())
+    val product: StateFlow<UIDetailState> = _product.asStateFlow()
 
-
-    fun onAddCartButtonClicked() {
-        _product.value?.let {
-            thereIsStock.value = it.stock?.let {
-                it > 0
-            } ?: false
+    private fun refreshUI(idProduct: Int) {
+        viewModelScope.launch {
+            val product = productRepository.getProductById(idProduct).first()
+            _product.value = UIDetailState(
+                isFound = true,
+                product = product,
+                available = product?.stock?.let { it > 0 } ?: false,
+                discount = product?.discountPrice?.let { true }  ?: false
+            )
         }
     }
+
+    fun onAddCartButtonClicked() {
+
+    }
+
+    data class UIDetailState(
+        val isFound: Boolean = false,
+        val product: ProductDetail? = null,
+        val available: Boolean = false,
+        val discount: Boolean = false
+    )
 }

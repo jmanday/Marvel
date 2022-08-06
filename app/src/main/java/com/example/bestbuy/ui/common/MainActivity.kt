@@ -1,11 +1,10 @@
-package com.example.bestbuy.ui.activities
+package com.example.bestbuy.ui.common
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.bestbuy.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,4 +1,4 @@
-package com.example.bestbuy.ui.fragments
+package com.example.bestbuy.ui.splash
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,16 +8,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavOptions
 import com.example.bestbuy.R
 import com.example.bestbuy.databinding.FragmentSplashBinding
-import com.example.bestbuy.ui.viewmodels.ProductViewModel
-import com.example.bestbuy.ui.viewmodels.SplashViewModel
-import java.util.*
+import com.example.bestbuy.ui.fragments.BaseFragment
 
-const val SPLASH_DELAY = 3000L
 
-class SplashFragment : BaseFragment() {
+class SplashFragment : BaseFragment(R.layout.fragment_splash) {
 
     private val vieModel: SplashViewModel by lazy {
-        ViewModelProvider(this).get(SplashViewModel::class.java)
+        ViewModelProvider(this)[SplashViewModel::class.java]
     }
 
     override fun onCreateView(
@@ -28,7 +25,8 @@ class SplashFragment : BaseFragment() {
         return FragmentSplashBinding.inflate(inflater).root
     }
 
-    override fun initialize() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         vieModel.load {
             onNavigationToDestinationFromSplash(R.id.action_splashFragment_to_productListFragment, null,
                 NavOptions.Builder()
@@ -36,4 +34,5 @@ class SplashFragment : BaseFragment() {
                     .build())
         }
     }
+
 }

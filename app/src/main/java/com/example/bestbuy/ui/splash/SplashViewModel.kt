@@ -1,4 +1,4 @@
-package com.example.bestbuy.ui.viewmodels
+package com.example.bestbuy.ui.splash
 
 import com.example.core_data.utils.ExecutorViewModel
 

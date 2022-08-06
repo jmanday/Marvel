@@ -7,11 +7,11 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent.inject
 
-class ProductViewModel: ViewModel() {
+class ProductListViewModel: ViewModel() {
 
     private val productRepository: ProductRepository by inject(ProductRepository::class.java)
-    private val _state = MutableStateFlow(UIState())
-    val state: StateFlow<UIState> = _state.asStateFlow()
+    private val _state = MutableStateFlow(UIProductListState())
+    val state: StateFlow<UIProductListState> = _state.asStateFlow()
 
     init {
         refresh()
@@ -19,12 +19,12 @@ class ProductViewModel: ViewModel() {
 
     private fun refresh() {
         viewModelScope.launch {
-            _state.value = UIState(loading = true)
-            _state.value = UIState(products = productRepository.getProducts().first())
+            _state.value = UIProductListState(loading = true)
+            _state.value = UIProductListState(products = productRepository.getProducts().first())
         }
     }
 
-    data class UIState(
+    data class UIProductListState(
          val loading: Boolean = false,
          val products: List<Product>? = null,
          val navigateTo: Product? = null

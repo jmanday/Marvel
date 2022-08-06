@@ -7,7 +7,7 @@ import androidx.navigation.*
 import androidx.navigation.fragment.FragmentNavigator
 import com.google.android.material.appbar.MaterialToolbar
 
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment(resId: Int) : Fragment(resId) {
 
     protected var mToolBar: MaterialToolbar? = null
     private lateinit var navController: NavController
@@ -18,8 +18,6 @@ abstract class BaseFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         navController = Navigation.findNavController(view)
-        initialize()
-
         mToolBar?.let {
             it.setNavigationOnClickListener {
                 onNavigationToBack()
@@ -51,5 +49,4 @@ abstract class BaseFragment : Fragment() {
         navController.navigate(actionId, args, options)
     }
 
-    protected abstract fun initialize()
 }

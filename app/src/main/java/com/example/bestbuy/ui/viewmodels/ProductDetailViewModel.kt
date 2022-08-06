@@ -12,12 +12,13 @@ open class ProductDetailViewModel : ViewModel() {
     private val productRepository: ProductRepository by inject(ProductRepository::class.java)
     var idProduct: Int = 0
         set(value) {
-            refreshUI(value)
+            field = value
+            refreshUI()
         }
     private var _product = MutableStateFlow(UIDetailState())
     val product: StateFlow<UIDetailState> = _product.asStateFlow()
 
-    private fun refreshUI(idProduct: Int) {
+    private fun refreshUI() {
         viewModelScope.launch {
             val product = productRepository.getProductById(idProduct).first()
             _product.value = UIDetailState(

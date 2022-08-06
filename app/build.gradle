@@ -36,6 +36,7 @@ android {
 
     dataBinding.enabled = true
     viewBinding.enabled = true
+    buildToolsVersion '30.0.2'
 }
 
 dependencies {

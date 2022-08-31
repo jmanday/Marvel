@@ -1,4 +1,4 @@
-package com.example.bestbuy.data
+package com.example.bestbuy.data.models
 
 data class ProductDetailEntity(
     var description: String? = null,

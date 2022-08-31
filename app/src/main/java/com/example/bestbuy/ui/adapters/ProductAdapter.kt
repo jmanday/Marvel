@@ -4,14 +4,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.bestbuy.R
+import com.example.bestbuy.ui.models.ProductModel
 import com.example.bestbuy.ui.viewholder.ProductViewHolder
-import com.example.core_domain.Product
 import com.manday.coreui.adapter.BaseAdapter
 
 
-class ProductAdapter(listProduct: List<Product>, listener: (Product, View) -> Unit) : BaseAdapter<Product, ProductViewHolder>(listProduct, listener) {
+class ProductAdapter(listProduct: List<ProductModel>, listener: (ProductModel, View) -> Unit) : BaseAdapter<ProductModel, ProductViewHolder>(listProduct, listener) {
 
-    val load: (listProductLoaded: List<Product>) -> Unit = {
+    val load: (listProductLoaded: List<ProductModel>) -> Unit = {
         listT = it
         notifyDataSetChanged()
     }

@@ -1,7 +1,7 @@
 package com.example.bestbuy.data.datasource
 
-import com.example.bestbuy.data.ProductDetailEntity
-import com.example.bestbuy.data.ProductEntity
+import com.example.bestbuy.data.models.ProductDetailEntity
+import com.example.bestbuy.data.models.ProductEntity
 
 interface ProductDataSource {
 

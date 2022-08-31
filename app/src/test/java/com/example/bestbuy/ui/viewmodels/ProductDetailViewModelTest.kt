@@ -1,7 +1,7 @@
 package com.example.bestbuy.ui.viewmodels
 
 import androidx.lifecycle.Observer
-import com.example.bestbuy.repository.ProductRepository
+import com.example.bestbuy.domain.repository.ProductRepository
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -27,7 +27,7 @@ class ProductDetailViewModelTest {
         MockitoAnnotations.initMocks(this)
         viewModel = ProductDetailViewModel()
 
-        observer?.let { viewModel?.thereIsStock?.observeForever(it) }
+        //observer?.let { viewModel?.thereIsStock?.observeForever(it) }
     }
 
     @Test

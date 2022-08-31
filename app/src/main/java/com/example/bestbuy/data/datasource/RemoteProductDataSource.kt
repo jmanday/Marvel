@@ -1,8 +1,8 @@
 package com.example.bestbuy.data.datasource
 
 
-import com.example.bestbuy.data.ProductDetailEntity
-import com.example.bestbuy.data.ProductEntity
+import com.example.bestbuy.data.models.ProductDetailEntity
+import com.example.bestbuy.data.models.ProductEntity
 import com.example.bestbuy.data.datasource.net.ProductApi
 import com.example.core_data.utils.BASE_URL
 import com.example.core_data.RetrofitController

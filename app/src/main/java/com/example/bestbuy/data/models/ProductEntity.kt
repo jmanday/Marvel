@@ -1,4 +1,4 @@
-package com.example.bestbuy.data
+package com.example.bestbuy.data.models
 
 import com.google.gson.annotations.SerializedName
 

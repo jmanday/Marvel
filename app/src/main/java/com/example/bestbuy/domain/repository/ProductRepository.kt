@@ -1,7 +1,7 @@
-package com.example.bestbuy.repository
+package com.example.bestbuy.domain.repository
 
-import com.example.core_domain.Product
-import com.example.core_domain.ProductDetail
+import com.example.bestbuy.domain.models.Product
+import com.example.bestbuy.domain.models.ProductDetail
 import kotlinx.coroutines.flow.Flow
 
 interface ProductRepository {

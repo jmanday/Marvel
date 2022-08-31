@@ -6,8 +6,8 @@ import com.example.bestbuy.data.datasource.db.*
 import com.example.bestbuy.data.datasource.net.NetDataSource
 import com.example.bestbuy.data.datasource.net.RetrofitDataSource
 import com.example.bestbuy.navigation.NavigateFromProductToDetailFragment
-import com.example.bestbuy.repository.InternalProductRepository
-import com.example.bestbuy.repository.ProductRepository
+import com.example.bestbuy.domain.repository.InternalProductRepository
+import com.example.bestbuy.domain.repository.ProductRepository
 import com.example.core_ui.transitions.ContainerTransformFade
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module

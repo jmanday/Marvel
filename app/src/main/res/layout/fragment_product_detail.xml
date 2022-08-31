@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="product"
-            type="com.example.core_domain.ProductDetail" />
+            name="productDetailModel"
+            type="com.example.bestbuy.ui.models.ProductDetailModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -57,7 +57,7 @@
             app:layout_constraintTop_toBottomOf="@id/horizontalGuideline"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="36dp"
-            android:visibility="@{product.showImageDiscount, default=gone}"
+            android:visibility="@{productDetailModel.showImageDiscount, default=gone}"
             android:src="@mipmap/discount_preview" />
 
 
@@ -95,7 +95,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorLigthGrey2"
-                    android:text="@={product.name}"
+                    android:text="@{productDetailModel.name}"
                     android:textSize="16sp"
                     android:textIsSelectable="true"
                     android:inputType="none"
@@ -123,7 +123,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorLigthGrey2"
-                    android:text="@={product.brand}"
+                    android:text="@{productDetailModel.brand}"
                     android:textSize="16sp"
                     android:textIsSelectable="true"
                     android:inputType="none"
@@ -151,7 +151,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorLigthGrey2"
-                    android:text="@={product.description}"
+                    android:text="@{productDetailModel.description}"
                     android:textSize="16sp"
                     android:textIsSelectable="true"
                     android:inputType="none"
@@ -171,7 +171,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/mbAdd"
                 android:layout_marginStart="16dp"
                 android:textSize="18sp"
-                android:text="@{product.price}"
+                android:text="@{productDetailModel.price}"
                 tools:text="122 €"/>
 
             <com.google.android.material.textview.MaterialTextView
@@ -183,7 +183,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/mbAdd"
                 android:layout_marginStart="1dp"
                 android:textSize="18sp"
-                android:text="@{product.currency}"
+                android:text="@{productDetailModel.currency}"
                 tools:text="122 €"/>
 
             <com.google.android.material.textview.MaterialTextView
@@ -194,7 +194,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tvDescription"
                 app:layout_constraintBottom_toBottomOf="@id/mbAdd"
                 android:layout_marginStart="16dp"
-                android:text="@{product.discountPrice}"
+                android:text="@{productDetailModel.discountPrice}"
                 android:textSize="28sp"
                 android:textStyle="bold"
                 tools:text="122 €"/>
@@ -209,7 +209,7 @@
                 android:layout_marginStart="1dp"
                 android:textSize="28sp"
                 android:textStyle="bold"
-                android:text="@{product.currency}"
+                android:text="@{productDetailModel.currency}"
                 tools:text="122 €"/>
 
             <com.google.android.material.button.MaterialButton

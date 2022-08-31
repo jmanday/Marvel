@@ -36,26 +36,28 @@ class ProductDetailFragment : BaseFragment(R.layout.fragment_product_detail) {
         super.onViewCreated(view, savedInstanceState)
 
         val binding = FragmentProductDetailBinding.bind(view)
-
         vieModel.idProduct = args.product.id ?: 0
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                vieModel.product.collect { binding.updateUI(it) }
+                vieModel.productState.collect { binding.updateUI(it) }
             }
         }
         //mToolBar = fragmentProductDetailBinding.toolbar
         binding.root.transitionName = args.transitionName
 
         Glide.with(requireContext())
-            .load(args.product.image)
+            .load(args.product.imagePath)
             .into(binding.ivProduct)
 
         binding.mbAdd.setOnClickListener { vieModel.onAddCartButtonClicked() }
     }
 
     private fun FragmentProductDetailBinding.updateUI(state: ProductDetailViewModel.UIDetailState) {
-        product = state.product
-        tvPrice.paintFlags = if (state.discount) tvPrice.paintFlags else Paint.STRIKE_THRU_TEXT_FLAG
-        mbAdd.isEnabled = state.available
+        productDetailModel = state.product
+        tvPrice.paintFlags = state.product?.let {
+            tvPrice.paintFlags
+        } ?: Paint.STRIKE_THRU_TEXT_FLAG
+        mbAdd.isEnabled = state.product?.available ?: false
     }
+
 }

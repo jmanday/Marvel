@@ -1,12 +1,12 @@
-package com.example.bestbuy.repository
+package com.example.bestbuy.domain.repository
 
 import com.example.bestbuy.data.datasource.db.LocalDataSource
 import com.example.bestbuy.data.datasource.net.NetDataSource
+import com.example.bestbuy.domain.models.Product
+import com.example.bestbuy.domain.models.ProductDetail
 import com.example.bestbuy.mapper.toLocalProduct
 import com.example.bestbuy.mapper.toProduct
 import com.example.bestbuy.mapper.toProductDetail
-import com.example.core_domain.Product
-import com.example.core_domain.ProductDetail
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

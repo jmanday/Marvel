@@ -7,8 +7,8 @@ import com.example.bestbuy.R
 import com.example.bestbuy.databinding.FragmentProductListBinding
 import com.example.bestbuy.navigation.NavigateFromProductToDetailFragment
 import com.example.bestbuy.ui.adapters.ProductAdapter
+import com.example.bestbuy.ui.models.ProductModel
 import com.example.bestbuy.ui.viewmodels.ProductListViewModel
-import com.example.core_domain.Product
 import com.manday.coredata.navigation.MotionNavigate
 import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent.inject
@@ -27,7 +27,7 @@ class ProductListFragment : BaseFragment(R.layout.fragment_product_list) {
         ViewModelProvider(this).get(ProductListViewModel::class.java)
     }
 
-    private val navigateToDetailFragment: MotionNavigate<Product> by inject(
+    private val navigateToDetailFragment: MotionNavigate<ProductModel> by inject(
         NavigateFromProductToDetailFragment::class.java
     )
 
@@ -48,18 +48,12 @@ class ProductListFragment : BaseFragment(R.layout.fragment_product_list) {
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                vieModel.state.collect { binding.updateUI(it) }
+                vieModel.productListState.collect { binding.updateUI(it) }
             }
         }
     }
 
 
-    /*
-    override fun initialize() {
-        mToolBar = fragmentProductListBinding.toolbar
-    }
-
-     */
 
     private fun FragmentProductListBinding.updateUI(state: ProductListViewModel.UIProductListState) {
         progress.visibility = if (state.loading) View.VISIBLE else View.GONE

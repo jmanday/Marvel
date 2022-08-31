@@ -1,5 +1,6 @@
 package com.example.bestbuy.data
 
+import com.example.bestbuy.data.models.ProductEntity
 import com.google.gson.annotations.SerializedName
 
 data class ProductResponse(

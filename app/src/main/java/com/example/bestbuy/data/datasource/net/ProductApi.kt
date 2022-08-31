@@ -1,6 +1,6 @@
 package com.example.bestbuy.data.datasource.net
 
-import com.example.bestbuy.data.ProductDetailEntity
+import com.example.bestbuy.data.models.ProductDetailEntity
 import com.example.bestbuy.data.ProductResponse
 import retrofit2.Response
 import retrofit2.http.GET

@@ -1,4 +1,4 @@
-package com.example.core_domain
+package com.example.bestbuy.domain.models
 
 data class ProductDetail (
     var name: String? = null,

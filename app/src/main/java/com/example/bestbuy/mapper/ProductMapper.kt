@@ -1,11 +1,13 @@
 package com.example.bestbuy.mapper
 
 import com.example.bestbuy.Constants.MIN_DISCOUNT
-import com.example.bestbuy.data.ProductDetailEntity
-import com.example.bestbuy.data.ProductEntity
-import com.example.core_domain.Product
+import com.example.bestbuy.data.models.ProductDetailEntity
+import com.example.bestbuy.data.models.ProductEntity
+import com.example.bestbuy.domain.models.Product
+import com.example.bestbuy.domain.models.ProductDetail
+import com.example.bestbuy.ui.models.ProductDetailModel
+import com.example.bestbuy.ui.models.ProductModel
 import com.example.bestbuy.data.datasource.db.Product as LocalProduct
-import com.example.core_domain.ProductDetail
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -48,4 +50,20 @@ fun ProductDetailEntity.toProductDetail(): ProductDetail {
         showImageDiscount = showDiscountImage,
         discountPrice = finalPrice
     )
+}
+
+fun ProductDetail.toProductDetailModel() =
+    ProductDetailModel(
+
+    )
+
+fun List<Product>?.toListProductModel(): List<ProductModel> {
+    if (this == null) return listOf()
+
+    return map {
+        ProductModel(
+            id = it.id,
+            imagePath = it.image
+        )
+    }
 }

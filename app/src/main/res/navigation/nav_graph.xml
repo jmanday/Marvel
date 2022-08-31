@@ -30,7 +30,7 @@
         tools:layout="@layout/fragment_product_detail">
         <argument
             android:name="product"
-            app:argType="com.example.core_domain.Product" />
+            app:argType="com.example.bestbuy.ui.models.ProductModel" />
         <argument
             android:name="transitionName"
             app:argType="string" />

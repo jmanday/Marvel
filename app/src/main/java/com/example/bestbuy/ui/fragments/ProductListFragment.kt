@@ -24,7 +24,7 @@ class ProductListFragment : BaseFragment(R.layout.fragment_product_list) {
      */
 
     private val vieModel: ProductListViewModel by lazy {
-        ViewModelProvider(this).get(ProductListViewModel::class.java)
+        ViewModelProvider(this)[ProductListViewModel::class.java]
     }
 
     private val navigateToDetailFragment: MotionNavigate<ProductModel> by inject(

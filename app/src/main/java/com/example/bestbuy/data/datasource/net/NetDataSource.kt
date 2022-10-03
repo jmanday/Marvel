@@ -1,11 +1,8 @@
 package com.example.bestbuy.data.datasource.net
 
-import com.example.bestbuy.data.models.ProductDetailEntity
-import com.example.bestbuy.data.models.ProductEntity
+import com.example.bestbuy.data.models.CharacterEntity
 
 interface NetDataSource {
 
-    suspend fun getProductList(): List<ProductEntity>?
-
-    suspend fun getProductById(idProduct: Int): ProductDetailEntity?
+    suspend fun getCharacters(): CharacterEntity?
 }

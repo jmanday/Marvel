@@ -20,12 +20,15 @@ open class ProductDetailViewModel : ViewModel() {
     val productState: StateFlow<UIDetailState> = _productState.asStateFlow()
 
     private fun refreshUI() {
+        /*
         viewModelScope.launch {
             val product = productRepository.getProductById(idProduct).first()
             _productState.value = UIDetailState(
                 product = product?.toProductDetailModel()
             )
         }
+
+         */
     }
 
     fun onAddCartButtonClicked() {

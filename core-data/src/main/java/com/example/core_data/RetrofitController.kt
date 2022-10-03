@@ -12,7 +12,6 @@ object RetrofitController {
 
     fun createConnection(baseUrl: String) {
         connections[baseUrl] = Retrofit.Builder()
-            .client(client)
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -22,5 +21,8 @@ object RetrofitController {
         connections.getValue(baseUrl).create(T::class.java)
 
     inline fun <T, U> Response<T>.unwrapResponse(f: T.() -> List<U>) =
+        body()?.f()
+
+    inline fun <T, U> Response<T>.unwrapResponseSingle(f: T.() -> U) =
         body()?.f()
 }

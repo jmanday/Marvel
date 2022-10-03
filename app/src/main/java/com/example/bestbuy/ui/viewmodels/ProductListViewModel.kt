@@ -1,6 +1,7 @@
 package com.example.bestbuy.ui.viewmodels
 
 import androidx.lifecycle.*
+import com.example.bestbuy.data.models.CharacterEntity
 import com.example.bestbuy.domain.repository.ProductRepository
 import com.example.bestbuy.mapper.toListProductModel
 import com.example.bestbuy.ui.models.ProductModel
@@ -19,14 +20,15 @@ class ProductListViewModel: ViewModel() {
     }
 
     private fun refresh() {
+        _productListState.value = UIProductListState(loading = true)
         viewModelScope.launch {
-            _productListState.value = UIProductListState(loading = true)
-            _productListState.value = UIProductListState(products = productRepository.getProducts().first()?.toListProductModel())
+            _productListState.value = UIProductListState(character = productRepository.getCharacters().first())
         }
     }
 
     data class UIProductListState(
          val loading: Boolean = false,
-         val products: List<ProductModel>? = null
+         val products: List<ProductModel>? = null,
+         val character: CharacterEntity? = null
     )
 }

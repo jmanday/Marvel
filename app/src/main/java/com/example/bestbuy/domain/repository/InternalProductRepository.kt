@@ -2,6 +2,7 @@ package com.example.bestbuy.domain.repository
 
 import com.example.bestbuy.data.datasource.db.LocalDataSource
 import com.example.bestbuy.data.datasource.net.NetDataSource
+import com.example.bestbuy.data.models.CharacterEntity
 import com.example.bestbuy.domain.models.Product
 import com.example.bestbuy.domain.models.ProductDetail
 import com.example.bestbuy.mapper.toLocalProduct
@@ -17,6 +18,7 @@ class InternalProductRepository(
     private val localDataSource: LocalDataSource
 ) : ProductRepository {
 
+    /*
     override suspend fun getProducts(): Flow<List<Product>?> {
         return flow {
             if (localDataSource.getProducts().isEmpty()) {
@@ -29,11 +31,11 @@ class InternalProductRepository(
             emit(localDataSource.getProducts().map { it.toProduct() })
         }.flowOn(Dispatchers.IO)
     }
+*/
 
-
-    override fun getProductById(idProduct: Int): Flow<ProductDetail?> {
+    override suspend fun getCharacters(): Flow<CharacterEntity?> {
         return flow {
-            emit(netNetDataSource.getProductById(idProduct)?.toProductDetail())
+            emit( netNetDataSource.getCharacters())
         }.flowOn(Dispatchers.IO)
     }
 }

@@ -16,9 +16,9 @@
     </fragment>
     <fragment
         android:id="@+id/productListFragment"
-        android:name="com.example.bestbuy.ui.fragments.ProductListFragment"
+        android:name="com.example.bestbuy.ui.fragments.CharactersListFragment"
         android:label="fragment_product_list"
-        tools:layout="@layout/fragment_product_list" >
+        tools:layout="@layout/fragment_characters_list" >
         <action
             android:id="@+id/action_productListFragment_to_productDetailFragment"
             app:destination="@id/productDetailFragment" />

@@ -38,3 +38,12 @@ fun CharactersResponse.toCharacterEntity() =
             thumbnailPath = this.thumbnail.path,
         )
     }
+
+fun CharactersResponse.toCharacterEntityList() =
+    this.data.results.map {
+        CharacterEntity(
+            name = it.name,
+            description = it.description,
+            thumbnailPath = it.thumbnail.path,
+        )
+    }

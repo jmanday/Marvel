@@ -6,8 +6,8 @@ import com.example.bestbuy.data.datasource.db.*
 import com.example.bestbuy.data.datasource.net.NetDataSource
 import com.example.bestbuy.data.datasource.net.RetrofitDataSource
 import com.example.bestbuy.navigation.NavigateFromProductToDetailFragment
-import com.example.bestbuy.domain.repository.InternalProductRepository
-import com.example.bestbuy.domain.repository.ProductRepository
+import com.example.bestbuy.domain.repository.InternalCharacterRepository
+import com.example.bestbuy.domain.repository.CharacterRepository
 import com.example.core_ui.transitions.ContainerTransformFade
 import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
@@ -29,8 +29,8 @@ val appModuleDependencies = module {
     single<NetDataSource> { RetrofitDataSource() }
     single<LocalDataSource> { RoomDataSource(provideDao(provideDataBase(androidApplication()))) }
 
-    single<ProductRepository> {
-        InternalProductRepository(
+    single<CharacterRepository> {
+        InternalCharacterRepository(
             get(),
             get())
     }

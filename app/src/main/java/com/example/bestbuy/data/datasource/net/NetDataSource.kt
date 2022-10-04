@@ -4,5 +4,5 @@ import com.example.bestbuy.data.models.CharacterEntity
 
 interface NetDataSource {
 
-    suspend fun getCharacters(): CharacterEntity?
+    suspend fun getCharacters(): List<CharacterEntity>?
 }

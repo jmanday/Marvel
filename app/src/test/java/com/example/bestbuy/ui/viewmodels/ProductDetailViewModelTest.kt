@@ -1,7 +1,7 @@
 package com.example.bestbuy.ui.viewmodels
 
 import androidx.lifecycle.Observer
-import com.example.bestbuy.domain.repository.ProductRepository
+import com.example.bestbuy.domain.repository.CharacterRepository
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -13,7 +13,7 @@ import org.mockito.MockitoAnnotations
 class ProductDetailViewModelTest {
 
     @Mock
-    var repositoyy: ProductRepository? = null
+    var repositoyy: CharacterRepository? = null
 
     @Mock
     private var viewModel: ProductDetailViewModel? = null

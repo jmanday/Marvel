@@ -1,18 +1,16 @@
 package com.example.bestbuy.ui.viewholder
 
 import android.view.View
-import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
-import com.example.bestbuy.R
-import com.example.bestbuy.databinding.ViewItemProductBinding
-import com.example.bestbuy.ui.models.ProductModel
+import com.example.bestbuy.data.models.CharacterEntity
+import com.example.bestbuy.databinding.ViewItemCharacterBinding
 import com.example.core_ui.viewholder.BaseViewHolder
 
-class ProductViewHolder(private var view: View) : BaseViewHolder<ProductModel>(view) {
+class CharacterViewHolder(private var view: View) : BaseViewHolder<CharacterEntity>(view) {
 
-    private val binding = ViewItemProductBinding.bind(view)
+    private val binding = ViewItemCharacterBinding.bind(view)
 
-    override fun onBind(product: ProductModel, f: (product: ProductModel, v: View) -> Unit) {
+    override fun onBind(character: CharacterEntity, f: (character: CharacterEntity, v: View) -> Unit) {
         binding.ivFav.setOnClickListener {
             /*
             product.selected = !product.selected
@@ -23,8 +21,9 @@ class ProductViewHolder(private var view: View) : BaseViewHolder<ProductModel>(v
              */
         }
         binding.root.setOnClickListener {
-            f(product, it)
+            f(character, it)
         }
-        Glide.with(view.context).load(product.imagePath).into(binding.ivProduct)
+
+        Glide.with(view.context).load(character.thumbnailPath.plus("/portrait_incredible.jpg")).into(binding.ivCharacter)
     }
 }

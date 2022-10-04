@@ -1,7 +1,7 @@
 package com.example.bestbuy.data.models
 
 data class CharacterEntity(
-    private val name: String,
-    private val description: String,
-    private val thumbnailPath: String
+    val name: String,
+    val description: String,
+    val thumbnailPath: String
 )

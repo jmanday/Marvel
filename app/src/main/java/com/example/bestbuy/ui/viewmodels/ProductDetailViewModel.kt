@@ -1,16 +1,14 @@
 package com.example.bestbuy.ui.viewmodels
 
 import androidx.lifecycle.*
-import com.example.bestbuy.domain.repository.ProductRepository
-import com.example.bestbuy.mapper.toProductDetailModel
+import com.example.bestbuy.domain.repository.CharacterRepository
 import com.example.bestbuy.ui.models.ProductDetailModel
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent.inject
 
 open class ProductDetailViewModel : ViewModel() {
 
-    private val productRepository: ProductRepository by inject(ProductRepository::class.java)
+    private val productRepository: CharacterRepository by inject(CharacterRepository::class.java)
     var idProduct: Int = 0
         set(value) {
             field = value

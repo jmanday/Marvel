@@ -3,20 +3,15 @@ package com.example.bestbuy.domain.repository
 import com.example.bestbuy.data.datasource.db.LocalDataSource
 import com.example.bestbuy.data.datasource.net.NetDataSource
 import com.example.bestbuy.data.models.CharacterEntity
-import com.example.bestbuy.domain.models.Product
-import com.example.bestbuy.domain.models.ProductDetail
-import com.example.bestbuy.mapper.toLocalProduct
-import com.example.bestbuy.mapper.toProduct
-import com.example.bestbuy.mapper.toProductDetail
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-class InternalProductRepository(
+class InternalCharacterRepository(
     private val netNetDataSource: NetDataSource,
     private val localDataSource: LocalDataSource
-) : ProductRepository {
+) : CharacterRepository {
 
     /*
     override suspend fun getProducts(): Flow<List<Product>?> {
@@ -33,7 +28,7 @@ class InternalProductRepository(
     }
 */
 
-    override suspend fun getCharacters(): Flow<CharacterEntity?> {
+    override suspend fun getCharacters(): Flow<List<CharacterEntity>?> {
         return flow {
             emit( netNetDataSource.getCharacters())
         }.flowOn(Dispatchers.IO)

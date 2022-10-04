@@ -9,7 +9,7 @@ android {
     compileSdkVersion 33
 
     defaultConfig {
-        applicationId "com.example.bestbuy"
+        applicationId "com.manday.marvel.characteres"
         minSdkVersion 23
         targetSdkVersion 33
         versionCode 1

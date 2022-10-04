@@ -30,15 +30,6 @@ data class CharacterThumbnail(
     val extension: String
 )
 
-fun CharactersResponse.toCharacterEntity() =
-    with(this.data.results.first()) {
-        CharacterEntity(
-            name = this.name,
-            description = this.description,
-            thumbnailPath = this.thumbnail.path,
-        )
-    }
-
 fun CharactersResponse.toCharacterEntityList() =
     this.data.results.map {
         CharacterEntity(

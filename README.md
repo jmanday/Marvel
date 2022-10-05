@@ -20,5 +20,5 @@ This repository is formed by 4 modules.
 
 Into **app** module, the **MVVM** architecure is implemented as the picture shows below.
 
-![0*PKo4mQsOOGUqPlVp](https://user-images.githubusercontent.com/5518993/194011948-a368c134-b104-4f52-9fe1-58d85dab9f2f.png)
 
+![1*GVOEZQPu9MvGpn5nAsDKbQ](https://user-images.githubusercontent.com/5518993/194012626-d19dcd76-a3b7-4924-aaee-104910652dac.png)

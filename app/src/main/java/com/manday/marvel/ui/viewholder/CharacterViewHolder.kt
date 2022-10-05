@@ -10,7 +10,7 @@ class CharacterViewHolder(private var view: View) : BaseViewHolder<CharacterEnti
 
     private val binding = ViewItemCharacterBinding.bind(view)
 
-    override fun onBind(character: CharacterEntity, f: (character: CharacterEntity, v: View) -> Unit) {
+    override fun onBind(character: CharacterEntity) {
         binding.ivFav.setOnClickListener {
             /*
             product.selected = !product.selected
@@ -21,7 +21,7 @@ class CharacterViewHolder(private var view: View) : BaseViewHolder<CharacterEnti
              */
         }
         binding.root.setOnClickListener {
-            f(character, it)
+            //f(character, it)
         }
 
         Glide.with(view.context).load(character.thumbnailPath.plus("/portrait_incredible.jpg")).into(binding.ivCharacter)

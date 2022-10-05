@@ -29,9 +29,8 @@ Into **app** module, the **MVVM** architecure is implemented as the picture show
 - **Data**: which contains the data sources where the data are sent/got from.
 
 
-
 ## Design 
 
-Just an activity and fragments using the **Navigation component** from **Jetpack**
-**Coroutines** and **StateFlow** in viewmodel layer.
-In **data** layer, using **retrofit** and **room** as datasources.
+- Just an activity and fragments using the **Navigation component** from **Jetpack**
+- **Coroutines** and **StateFlow** in viewmodel layer.
+- In **data** layer, using **retrofit** and **room** as datasources.

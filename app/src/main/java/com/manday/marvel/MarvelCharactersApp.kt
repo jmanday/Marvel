@@ -8,7 +8,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
-class BestBuyApp : Application() {
+class MarvelCharactersApp : Application() {
 
     lateinit var db: ProductDatabase
         private set
@@ -23,7 +23,7 @@ class BestBuyApp : Application() {
 
         startKoin{
             androidLogger()
-            androidContext(this@BestBuyApp)
+            androidContext(this@MarvelCharactersApp)
             modules(appModuleDependencies)
         }
     }

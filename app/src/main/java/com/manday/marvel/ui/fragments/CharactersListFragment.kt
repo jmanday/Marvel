@@ -12,6 +12,7 @@ import com.manday.marvel.ui.adapters.CharacterAdapter
 import com.manday.marvel.ui.viewmodels.CharactersListViewModel
 import com.manday.coredata.navigation.MotionNavigate
 import com.manday.marvel.databinding.FragmentCharactersListBinding
+import com.manday.marvel.domain.repository.CharacterResult
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
 import org.koin.java.KoinJavaComponent.inject
@@ -39,7 +40,11 @@ class CharactersListFragment : BaseFragment(R.layout.fragment_characters_list) {
 
     private fun FragmentCharactersListBinding.updateUI(state: CharactersListViewModel.UIProductListState) {
         progress.visibility = if (state.loading) View.VISIBLE else View.GONE
-        state.characters?.let { adapter.submitList(it) }
+        when (state.characterResult) {
+            is CharacterResult.SuccessfullResult -> adapter.submitList(state.characterResult.listCharacterResult)
+            is CharacterResult.WrongResult -> adapter.submitList(emptyList())
+        }
+
     }
 
 

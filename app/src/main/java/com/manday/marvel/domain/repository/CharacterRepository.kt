@@ -5,5 +5,10 @@ import kotlinx.coroutines.flow.Flow
 
 interface CharacterRepository {
 
-    suspend fun getCharacters(): Flow<List<CharacterEntity>?>
+    suspend fun getCharacters(): Flow<CharacterResult>
+}
+
+sealed class CharacterResult {
+    class SuccessfullResult(val listCharacterResult: List<CharacterEntity>) : CharacterResult()
+    object WrongResult : CharacterResult()
 }

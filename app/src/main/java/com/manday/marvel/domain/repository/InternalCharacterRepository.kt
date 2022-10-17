@@ -2,7 +2,6 @@ package com.manday.marvel.domain.repository
 
 import com.manday.marvel.data.datasource.db.LocalDataSource
 import com.manday.marvel.data.datasource.net.NetDataSource
-import com.manday.marvel.data.models.CharacterEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -28,9 +27,11 @@ class InternalCharacterRepository(
     }
 */
 
-    override suspend fun getCharacters(): Flow<List<CharacterEntity>?> {
+    override suspend fun getCharacters(): Flow<CharacterResult> {
         return flow {
-            emit( netNetDataSource.getCharacters())
+            val callResult = netNetDataSource.getCharacters()
+            val result = if (callResult.isNullOrEmpty()) CharacterResult.WrongResult else CharacterResult.SuccessfullResult(callResult)
+            emit(result)
         }.flowOn(Dispatchers.IO)
     }
 }

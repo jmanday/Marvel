@@ -16,6 +16,11 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // define the
+        buildConfigField "String", "PUBLIC_KEY", "\"410d8d5ca72063c4ea4f60b06b35dd18\""
+        buildConfigField "String", "TS", "\"1\""
+        buildConfigField "String", "HASH_KEY", "\"1be845961364a54c6668f492c58e0644dbbace176410d8d5ca72063c4ea4f60b06b35dd18\""
     }
 
     buildTypes {

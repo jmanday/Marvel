@@ -1,7 +1,9 @@
 package com.manday.marvel.domain.repository
 
+import com.manday.marvel.BuildConfig
 import com.manday.marvel.data.datasource.db.LocalDataSource
 import com.manday.marvel.data.datasource.net.NetDataSource
+import com.manday.marvel.domain.mD5Provider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -29,7 +31,7 @@ class InternalCharacterRepository(
 
     override suspend fun getCharacters(): Flow<CharacterResult> {
         return flow {
-            val callResult = netNetDataSource.getCharacters()
+            val callResult = netNetDataSource.getCharacters(mD5Provider.getMD5(BuildConfig.HASH_KEY))
             val result = if (callResult.isNullOrEmpty()) CharacterResult.WrongResult else CharacterResult.SuccessfullResult(callResult)
             emit(result)
         }.flowOn(Dispatchers.IO)

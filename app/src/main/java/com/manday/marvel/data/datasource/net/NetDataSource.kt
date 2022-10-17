@@ -5,5 +5,5 @@ import com.manday.marvel.data.models.CharactersData
 
 interface NetDataSource {
 
-    suspend fun getCharacters(): List<CharacterEntity>?
+    suspend fun getCharacters(hashCode: String): List<CharacterEntity>?
 }

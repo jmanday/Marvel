@@ -63,7 +63,7 @@ internal class CharactersListViewModelTest : KoinTest {
 
         charactersListViewModel = CharactersListViewModel()
 
-        assertEquals(true, charactersListViewModel.productListState.value.loading)
+        assertEquals(true, charactersListViewModel.state.value.loading)
     }
 
    @Test
@@ -79,7 +79,7 @@ internal class CharactersListViewModelTest : KoinTest {
        // Execute pending coroutine actions. Wait until coroutine in stockViewModel.refresh() complete
        advanceUntilIdle()
 
-       val currentGameUiState = charactersListViewModel.productListState.value
+       val currentGameUiState = charactersListViewModel.state.value
        assertEquals(listOfCharacters.size, (currentGameUiState.characterResult as CharacterResult.SuccessfullResult).listCharacterResult.size)
    }
 
@@ -96,7 +96,7 @@ internal class CharactersListViewModelTest : KoinTest {
         // Execute pending coroutine actions. Wait until coroutine in stockViewModel.refresh() complete
         advanceUntilIdle()
 
-        val currentGameUiState = charactersListViewModel.productListState.value
+        val currentGameUiState = charactersListViewModel.state.value
         assertEquals(currentGameUiState.characterResult, CharacterResult.WrongResult)
     }
 }

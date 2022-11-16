@@ -1,21 +1,29 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-apply plugin: "androidx.navigation.safeargs"
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
 apply from: '../dependencies.gradle'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 33
 
     defaultConfig {
-        applicationId "com.example.bestbuy"
+        applicationId "com.manday.marvel.characteres"
         minSdkVersion 23
-        targetSdkVersion 30
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // define the
+        buildConfigField "String", "PUBLIC_KEY", "\"410d8d5ca72063c4ea4f60b06b35dd18\""
+        buildConfigField "String", "TS", "\"1\""
+        buildConfigField "String", "HASH_KEY", "\"1be845961364a54c6668f492c58e0644dbbace176410d8d5ca72063c4ea4f60b06b35dd18\""
     }
 
     buildTypes {
@@ -36,6 +44,7 @@ android {
 
     dataBinding.enabled = true
     viewBinding.enabled = true
+    buildToolsVersion '30.0.2'
 }
 
 dependencies {
@@ -61,12 +70,15 @@ dependencies {
     implementation project(':core-ui')
     implementation project(':core-data')
     implementation project(':core-domain')
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
 
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'org.mockito:mockito-core:2.23.0'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.mockito.kotlin:mockito-kotlin:4.0.0'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.3'
     testImplementation "io.mockk:mockk:1.9.3"
+    testImplementation "io.insert-koin:koin-test:$koin_version"
+    testImplementation "io.insert-koin:koin-test-junit4:$koin_version"
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

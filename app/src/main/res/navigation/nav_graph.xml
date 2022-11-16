@@ -7,32 +7,51 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.bestbuy.ui.fragments.SplashFragment"
+        android:name="com.manday.marvel.ui.splash.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
             android:id="@+id/action_splashFragment_to_productListFragment"
-            app:destination="@id/productListFragment" />
+            app:destination="@id/main_dest" />
     </fragment>
     <fragment
-        android:id="@+id/productListFragment"
-        android:name="com.example.bestbuy.ui.fragments.ProductListFragment"
+        android:id="@+id/main_dest"
+        android:name="com.manday.marvel.ui.fragments.CharactersListFragment"
         android:label="fragment_product_list"
-        tools:layout="@layout/fragment_product_list" >
+        tools:layout="@layout/fragment_characters_list" >
+        <!--
         <action
             android:id="@+id/action_productListFragment_to_productDetailFragment"
             app:destination="@id/productDetailFragment" />
+            -->
+        <action
+            android:id="@+id/action_main_to_detail"
+            app:destination="@id/detail_dest"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
+        android:id="@+id/detail_dest"
+        android:name="com.manday.marvel.ui.fragments.CharacterDetailFragment"
+        android:label="CharacterDetailFragment" >
+        <argument
+            android:name="character"
+            app:argType="com.manday.marvel.data.models.CharacterEntity" />
+    </fragment>
+    <!--
+    <fragment
         android:id="@+id/productDetailFragment"
-        android:name="com.example.bestbuy.ui.fragments.ProductDetailFragment"
+        android:name="com.manday.marvel.ui.fragments.ProductDetailFragment"
         android:label="ProductDetailFragment"
         tools:layout="@layout/fragment_product_detail">
         <argument
             android:name="product"
-            app:argType="com.example.core_domain.Product" />
+            app:argType="com.example.bestbuy.ui.models.ProductModel" />
         <argument
             android:name="transitionName"
             app:argType="string" />
     </fragment>
+    -->
 </navigation>

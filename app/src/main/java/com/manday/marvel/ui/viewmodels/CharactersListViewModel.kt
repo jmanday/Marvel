@@ -12,7 +12,13 @@ class CharactersListViewModel: ViewModel() {
 
     private val characterRepository: CharacterRepository by inject(CharacterRepository::class.java)
     private val _state = MutableStateFlow(UIProductListState())
-    val state: StateFlow<UIProductListState> = _state.asStateFlow()
+    val state: StateFlow<UIProductListState> get() {
+        if (_state.value.navigateTo != null) {
+            _state.value = _state.value.copy(navigateTo = null)
+        }
+
+        return _state
+    }
 
     init {
         refresh()

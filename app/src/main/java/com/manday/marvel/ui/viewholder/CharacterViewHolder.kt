@@ -6,7 +6,9 @@ import com.manday.marvel.data.models.CharacterEntity
 import com.manday.marvel.databinding.ViewItemCharacterBinding
 import com.manday.core_ui.viewholder.BaseViewHolder
 
-class CharacterViewHolder(private var view: View) : BaseViewHolder<CharacterEntity>(view) {
+class CharacterViewHolder(
+    private var view: View,
+    private val listener: (CharacterEntity) -> Unit) : BaseViewHolder<CharacterEntity>(view) {
 
     private val binding = ViewItemCharacterBinding.bind(view)
 
@@ -21,7 +23,7 @@ class CharacterViewHolder(private var view: View) : BaseViewHolder<CharacterEnti
              */
         }
         binding.root.setOnClickListener {
-            //f(character, it)
+            listener(character)
         }
 
         Glide.with(view.context).load(character.thumbnailPath.plus("/portrait_incredible.jpg")).into(binding.ivCharacter)

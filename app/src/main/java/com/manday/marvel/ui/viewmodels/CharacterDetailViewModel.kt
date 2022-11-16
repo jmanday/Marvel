@@ -1,12 +1,15 @@
 package com.manday.marvel.ui.viewmodels
 
 import androidx.lifecycle.*
+import com.manday.marvel.data.models.CharacterEntity
 import com.manday.marvel.domain.repository.CharacterRepository
 import com.manday.marvel.ui.models.ProductDetailModel
 import kotlinx.coroutines.flow.*
 import org.koin.java.KoinJavaComponent.inject
 
-open class ProductDetailViewModel : ViewModel() {
+open class CharacterDetailViewModel(
+    val characterEntity: CharacterEntity
+) : ViewModel() {
 
     private val productRepository: CharacterRepository by inject(CharacterRepository::class.java)
     var idProduct: Int = 0
@@ -16,6 +19,7 @@ open class ProductDetailViewModel : ViewModel() {
         }
     private var _productState = MutableStateFlow(UIDetailState())
     val productState: StateFlow<UIDetailState> = _productState.asStateFlow()
+
 
     private fun refreshUI() {
         /*

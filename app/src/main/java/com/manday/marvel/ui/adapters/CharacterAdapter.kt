@@ -9,11 +9,13 @@ import com.manday.marvel.ui.viewholder.CharacterViewHolder
 import com.manday.marvel.ui.viewholder.CharacterDiffCallback
 
 
-class CharacterAdapter : BaseListAdapter<CharacterEntity, CharacterViewHolder>(CharacterDiffCallback()) {
+class CharacterAdapter(
+    val listener: (CharacterEntity) -> Unit
+) : BaseListAdapter<CharacterEntity, CharacterViewHolder>(CharacterDiffCallback()) {
 
     override fun generateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.view_item_character, parent, false)
 
-        return CharacterViewHolder(v)
+        return CharacterViewHolder(v, listener)
     }
 }

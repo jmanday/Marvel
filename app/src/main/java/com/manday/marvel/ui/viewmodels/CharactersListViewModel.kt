@@ -1,37 +1,38 @@
 package com.manday.marvel.ui.viewmodels
 
 import androidx.lifecycle.*
-import com.manday.marvel.data.datasource.db.RoomDataSource
-import com.manday.marvel.data.datasource.net.RetrofitDataSource
 import com.manday.marvel.data.models.CharacterEntity
 import com.manday.marvel.domain.repository.CharacterRepository
 import com.manday.marvel.domain.repository.CharacterResult
-import com.manday.marvel.domain.repository.InternalCharacterRepository
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import org.koin.android.ext.koin.androidApplication
 import org.koin.java.KoinJavaComponent.inject
 
 class CharactersListViewModel: ViewModel() {
 
     private val characterRepository: CharacterRepository by inject(CharacterRepository::class.java)
-    private val _productListState = MutableStateFlow(UIProductListState())
-    val productListState: StateFlow<UIProductListState> = _productListState.asStateFlow()
+    private val _state = MutableStateFlow(UIProductListState())
+    val state: StateFlow<UIProductListState> = _state.asStateFlow()
 
     init {
         refresh()
     }
 
     private fun refresh() {
-        _productListState.value = UIProductListState(loading = true)
+        _state.value = UIProductListState(loading = true)
 
         viewModelScope.launch {
-            _productListState.value = UIProductListState(characterResult =  characterRepository.getCharacters().first())
+            _state.value = UIProductListState(characterResult =  characterRepository.getCharacters().first())
         }
+    }
+
+    fun onCharacterClicked(characterEntity: CharacterEntity) {
+        _state.value = _state.value.copy(navigateTo = characterEntity)
     }
 
     data class UIProductListState(
          val loading: Boolean = false,
-         val characterResult: CharacterResult? = null
+         val characterResult: CharacterResult? = null,
+         val navigateTo: CharacterEntity? = null
     )
 }

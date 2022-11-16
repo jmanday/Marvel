@@ -2,9 +2,10 @@ package com.manday.marvel.ui.fragments
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.*
-import androidx.lifecycle.viewmodel.CreationExtras
+import androidx.navigation.fragment.findNavController
 import com.manday.marvel.R
 import com.manday.marvel.data.models.CharacterEntity
 import com.manday.marvel.navigation.NavigateFromProductToDetailFragment
@@ -14,13 +15,12 @@ import com.manday.coredata.navigation.MotionNavigate
 import com.manday.marvel.databinding.FragmentCharactersListBinding
 import com.manday.marvel.domain.repository.CharacterResult
 import kotlinx.coroutines.launch
-import org.koin.android.ext.android.get
 import org.koin.java.KoinJavaComponent.inject
 
 
 class CharactersListFragment : BaseFragment(R.layout.fragment_characters_list) {
 
-    private var adapter = CharacterAdapter()
+    private lateinit var adapter: CharacterAdapter
     private val vieModel: CharactersListViewModel by viewModels()
     private val navigateToDetailFragment: MotionNavigate<CharacterEntity> by inject(
         NavigateFromProductToDetailFragment::class.java
@@ -28,12 +28,14 @@ class CharactersListFragment : BaseFragment(R.layout.fragment_characters_list) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val binding = FragmentCharactersListBinding.bind(view)
-        binding.productRecyclerView.adapter = adapter
+        adapter = CharacterAdapter(vieModel::onCharacterClicked)
+        val binding = FragmentCharactersListBinding.bind(view).apply {
+            charactersRecyclerView.adapter = adapter
+        }
 
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                vieModel.productListState.collect { binding.updateUI(it) }
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                vieModel.state.collect { binding.updateUI(it) }
             }
         }
     }
@@ -43,9 +45,12 @@ class CharactersListFragment : BaseFragment(R.layout.fragment_characters_list) {
         when (state.characterResult) {
             is CharacterResult.SuccessfullResult -> adapter.submitList(state.characterResult.listCharacterResult)
             is CharacterResult.WrongResult -> adapter.submitList(emptyList())
+            else -> {}
+        }
+        state.navigateTo?.let {
+            val navAction = CharactersListFragmentDirections.actionMainToDetail(it)
+            findNavController().navigate(navAction)
         }
 
     }
-
-
 }

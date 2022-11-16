@@ -21,47 +21,26 @@ class CharacterDetailFragment : BaseFragment(R.layout.fragment_character_detail)
         DetailViewModelFactory(navArgs.character)
     }
 
+    private val character: CharacterEntity by lazy {
+        navArgs.character
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val binding = FragmentCharacterDetailBinding.bind(view)
-        binding.characterDetailToolbar.setOnClickListener { findNavController().popBackStack() }
-        Glide.with(view.context).load(navArgs.character.thumbnailPath.plus("/portrait_incredible.jpg")).into(binding.characterDetailImage)
-        //val binding = FragmentProductDetailBinding.bind(view)
-        //vieModel.idProduct = args.product.id ?: 0
-        /*
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                vieModel.productState.collect { binding.updateUI(it) }
-            }
+            .updateUI()
+    }
+
+    private fun FragmentCharacterDetailBinding.updateUI() {
+        characterDetailToolbar.setOnClickListener { findNavController().popBackStack() }
+        view?.let { Glide.with(it.context).load(character.thumbnailPath.plus("/landscape_incredible.jpg")).into(characterDetailImage) }
+        with(character) {
+            characterDetailToolbar.title = name
+            characterDetailDescription.text = character.description
         }
-
-         */
-        //mToolBar = fragmentProductDetailBinding.toolbar
-        //binding.root.transitionName = args.transitionName
-
-        /*
-        Glide.with(requireContext())
-            .load(args.product.imagePath)
-            .into(binding.ivProduct)
-*/
-        //binding.mbAdd.setOnClickListener { vieModel.onAddCartButtonClicked() }
     }
 
-    /*
-    private fun FragmentProductDetailBinding.updateUI(state: ProductDetailViewModel.UIDetailState) {
-        productDetailModel = state.product
-        tvPrice.paintFlags = state.product?.let {
-            tvPrice.paintFlags
-        } ?: Paint.STRIKE_THRU_TEXT_FLAG
-        mbAdd.isEnabled = state.product?.available ?: false
-    }
-
-     */
-
-    companion object {
-        val CHARACTER = "CHARACTER"
-    }
 
     class DetailViewModelFactory(val characterEntity: CharacterEntity) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {

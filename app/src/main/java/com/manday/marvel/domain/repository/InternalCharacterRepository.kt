@@ -32,7 +32,8 @@ class InternalCharacterRepository(
     override suspend fun getCharacters(): Flow<CharacterResult> {
         return flow {
             val callResult = netNetDataSource.getCharacters(mD5Provider.getMD5(BuildConfig.HASH_KEY))
-            val result = if (callResult.isNullOrEmpty()) CharacterResult.WrongResult else CharacterResult.SuccessfullResult(callResult)
+            val result = if (callResult.isNullOrEmpty()) CharacterResult.WrongResult else CharacterResult.SuccessfullResult(
+                callResult.filter { !it.thumbnailPath.contains("image_not_available".toRegex()) })
             emit(result)
         }.flowOn(Dispatchers.IO)
     }

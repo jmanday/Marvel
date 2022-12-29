@@ -34,3 +34,13 @@ Into **app** module, the **MVVM** architecure is implemented as the picture show
 - Just an activity and fragments using the **Navigation component** from **Jetpack**
 - **Coroutines** and **StateFlow** in viewmodel layer.
 - In **data** layer, using **retrofit** and **room** as datasources.
+
+## Architecture Components
+This project contains several libraries from Architecture Component, a new collection of libraries that contains the lifecycle-aware components. It can solve problems with configuration changes, supports data persistence, reduces boilerplate code, helps to prevent memory leaks and simplifies async data loading into your UI.
+
+It will show which libraries is being used in this project
+
+### UI Layer libraries
+- **View Binding** to interact with views more easily
+- **Data Binding Library** to bind UI components in your layouts to data sources in your app using a declarative format rather than programmatically
+- **Lifecycle-Aware Components** to perform actions in response to a change in the lifecycle status of another component

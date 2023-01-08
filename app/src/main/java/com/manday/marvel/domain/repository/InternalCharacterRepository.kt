@@ -10,9 +10,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
 class InternalCharacterRepository(
-    private val netNetDataSource: NetDataSource,
-    private val localDataSource: LocalDataSource
-) : CharacterRepository {
+    private val netNetDataSource: NetDataSource) : CharacterRepository {
 
     /*
     override suspend fun getProducts(): Flow<List<Product>?> {

@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'com.google.dagger.hilt.android' version '2.44' apply false
 }
 
 apply from: '../dependencies.gradle'
@@ -20,7 +21,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        // define the
+        // defining fields just used by compile time
         buildConfigField "String", "PUBLIC_KEY", "\"410d8d5ca72063c4ea4f60b06b35dd18\""
         buildConfigField "String", "TS", "\"1\""
         buildConfigField "String", "HASH_KEY", "\"1be845961364a54c6668f492c58e0644dbbace176410d8d5ca72063c4ea4f60b06b35dd18\""
@@ -34,8 +35,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
@@ -73,6 +74,9 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
 
+    implementation "com.google.dagger:hilt-android:2.44"
+    kapt "com.google.dagger:hilt-compiler:2.44"
+
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.mockito.kotlin:mockito-kotlin:4.0.0'
     testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.3'
@@ -83,4 +87,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes true
 }

@@ -1,16 +1,21 @@
 package com.manday.marvel.ui.viewmodels
 
 import androidx.lifecycle.*
+import com.manday.marvel.data.datasource.db.LocalDataSource
+import com.manday.marvel.data.datasource.db.RoomDataSource
+import com.manday.marvel.data.datasource.net.RetrofitDataSource
 import com.manday.marvel.data.models.CharacterEntity
 import com.manday.marvel.domain.repository.CharacterRepository
 import com.manday.marvel.domain.repository.CharacterResult
+import com.manday.marvel.domain.repository.InternalCharacterRepository
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import org.koin.java.KoinJavaComponent.inject
 
 class CharactersListViewModel: ViewModel() {
 
-    private val characterRepository: CharacterRepository by inject(CharacterRepository::class.java)
+    private val characterRepository: CharacterRepository = InternalCharacterRepository(
+        RetrofitDataSource())
     private val _state = MutableStateFlow(UIProductListState())
     val state: StateFlow<UIProductListState> get() {
         if (_state.value.navigateTo != null) {

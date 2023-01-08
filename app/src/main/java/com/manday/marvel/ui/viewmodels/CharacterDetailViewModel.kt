@@ -11,7 +11,6 @@ open class CharacterDetailViewModel(
     val characterEntity: CharacterEntity
 ) : ViewModel() {
 
-    private val productRepository: CharacterRepository by inject(CharacterRepository::class.java)
     var idProduct: Int = 0
         set(value) {
             field = value

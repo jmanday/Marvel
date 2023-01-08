@@ -21,10 +21,12 @@ class MarvelCharactersApp : Application() {
             ProductDatabase::class.java, "product-database"
         ).build()
 
+        /*
         startKoin{
             androidLogger()
             androidContext(this@MarvelCharactersApp)
             modules(appModuleDependencies)
         }
+         */
     }
 }

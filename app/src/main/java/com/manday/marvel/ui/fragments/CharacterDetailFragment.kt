@@ -13,14 +13,14 @@ import com.manday.marvel.data.models.CharacterEntity
 import com.manday.marvel.ui.viewmodels.CharacterDetailViewModel
 import com.manday.marvel.ui.viewmodels.CharactersListViewModel
 import com.manday.marvel.databinding.FragmentCharacterDetailBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CharacterDetailFragment : BaseFragment(R.layout.fragment_character_detail) {
 
     private val navArgs: CharacterDetailFragmentArgs by navArgs()
 
-    private val vieModel: CharacterDetailViewModel by viewModels {
-        DetailViewModelFactory(navArgs.character)
-    }
+    private val vieModel: CharacterDetailViewModel by viewModels()
 
     private val character: CharacterEntity by lazy {
         navArgs.character
@@ -39,13 +39,6 @@ class CharacterDetailFragment : BaseFragment(R.layout.fragment_character_detail)
         with(character) {
             characterDetailToolbar.title = name
             characterDetailDescription.text = character.description
-        }
-    }
-
-
-    class DetailViewModelFactory(val characterEntity: CharacterEntity) : ViewModelProvider.Factory {
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            return CharacterDetailViewModel(characterEntity) as T
         }
     }
 

@@ -10,9 +10,12 @@ import com.manday.marvel.ui.adapters.CharacterAdapter
 import com.manday.marvel.ui.viewmodels.CharactersListViewModel
 import com.manday.marvel.databinding.FragmentCharactersListBinding
 import com.manday.marvel.domain.repository.CharacterResult
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
+@AndroidEntryPoint
 class CharactersListFragment : BaseFragment(R.layout.fragment_characters_list) {
 
     private lateinit var adapter: CharacterAdapter

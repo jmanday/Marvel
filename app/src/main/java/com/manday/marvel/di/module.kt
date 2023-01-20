@@ -33,7 +33,6 @@ val appModuleDependencies = module {
 
     single<CharacterRepository> {
         InternalCharacterRepository(
-            get(),
             get())
     }
 
@@ -58,7 +57,6 @@ val testModule = module {
 
     single<CharacterRepository> {
         InternalCharacterRepository(
-            get(),
             get())
     }
 }

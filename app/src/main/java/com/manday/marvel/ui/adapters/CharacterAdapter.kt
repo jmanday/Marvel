@@ -8,7 +8,6 @@ import com.manday.marvel.data.models.CharacterEntity
 import com.manday.marvel.ui.viewholder.CharacterViewHolder
 import com.manday.marvel.ui.viewholder.CharacterDiffCallback
 
-
 class CharacterAdapter(
     val listener: (CharacterEntity) -> Unit
 ) : BaseListAdapter<CharacterEntity, CharacterViewHolder>(CharacterDiffCallback()) {

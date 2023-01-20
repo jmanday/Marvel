@@ -8,11 +8,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import javax.inject.Inject
 
-class InternalCharacterRepository(
-    private val netNetDataSource: NetDataSource,
-    private val localDataSource: LocalDataSource
-) : CharacterRepository {
+class InternalCharacterRepository @Inject constructor(
+    private val netNetDataSource: NetDataSource) : CharacterRepository {
 
     /*
     override suspend fun getProducts(): Flow<List<Product>?> {

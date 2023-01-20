@@ -3,15 +3,21 @@ package com.manday.marvel.ui.viewmodels
 import androidx.lifecycle.*
 import com.manday.marvel.data.models.CharacterEntity
 import com.manday.marvel.domain.repository.CharacterRepository
+import com.manday.marvel.ui.fragments.CharacterDetailFragment
+import com.manday.marvel.ui.fragments.CharacterDetailFragmentArgs
 import com.manday.marvel.ui.models.ProductDetailModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import org.koin.java.KoinJavaComponent.inject
+import javax.inject.Inject
 
-open class CharacterDetailViewModel(
-    val characterEntity: CharacterEntity
+@HiltViewModel
+class CharacterDetailViewModel @Inject constructor(
+    savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private val productRepository: CharacterRepository by inject(CharacterRepository::class.java)
+    var character = CharacterDetailFragmentArgs.fromSavedStateHandle(savedStateHandle).character
+
     var idProduct: Int = 0
         set(value) {
             field = value

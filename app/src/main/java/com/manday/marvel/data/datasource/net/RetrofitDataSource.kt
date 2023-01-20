@@ -7,9 +7,10 @@ import com.manday.core_data.RetrofitController
 import com.manday.core_data.RetrofitController.unwrapResponse
 import com.manday.core_data.RetrofitController.unwrapResponseSingle
 import com.manday.marvel.BuildConfig
+import javax.inject.Inject
 
 
-class RetrofitDataSource: NetDataSource {
+class RetrofitDataSource @Inject constructor() : NetDataSource {
 
     private var remoteServices: CharacterApi
 

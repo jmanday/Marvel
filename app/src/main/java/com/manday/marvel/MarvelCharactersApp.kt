@@ -4,10 +4,12 @@ import android.app.Application
 import androidx.room.Room
 import com.manday.marvel.data.datasource.db.ProductDatabase
 import com.manday.marvel.di.appModuleDependencies
+import dagger.hilt.android.HiltAndroidApp
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
+@HiltAndroidApp
 class MarvelCharactersApp : Application() {
 
     lateinit var db: ProductDatabase
@@ -21,10 +23,12 @@ class MarvelCharactersApp : Application() {
             ProductDatabase::class.java, "product-database"
         ).build()
 
+        /*
         startKoin{
             androidLogger()
             androidContext(this@MarvelCharactersApp)
             modules(appModuleDependencies)
         }
+         */
     }
 }

@@ -1,16 +1,22 @@
 package com.manday.marvel.ui.viewmodels
 
 import androidx.lifecycle.*
+
 import com.manday.marvel.data.models.CharacterEntity
 import com.manday.marvel.domain.repository.CharacterRepository
 import com.manday.marvel.domain.repository.CharacterResult
+
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import org.koin.java.KoinJavaComponent.inject
+import javax.inject.Inject
 
-class CharactersListViewModel: ViewModel() {
 
-    private val characterRepository: CharacterRepository by inject(CharacterRepository::class.java)
+@HiltViewModel
+class CharactersListViewModel @Inject constructor(
+    private val characterRepository: CharacterRepository
+): ViewModel() {
+
     private val _state = MutableStateFlow(UIProductListState())
     val state: StateFlow<UIProductListState> get() {
         if (_state.value.navigateTo != null) {

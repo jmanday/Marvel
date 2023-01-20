@@ -8,11 +8,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import javax.inject.Inject
 
-class InternalCharacterRepository(
-    private val netNetDataSource: NetDataSource,
-    private val localDataSource: LocalDataSource
-) : CharacterRepository {
+class InternalCharacterRepository @Inject constructor(
+    private val netNetDataSource: NetDataSource) : CharacterRepository {
 
     /*
     override suspend fun getProducts(): Flow<List<Product>?> {
@@ -32,7 +31,8 @@ class InternalCharacterRepository(
     override suspend fun getCharacters(): Flow<CharacterResult> {
         return flow {
             val callResult = netNetDataSource.getCharacters(mD5Provider.getMD5(BuildConfig.HASH_KEY))
-            val result = if (callResult.isNullOrEmpty()) CharacterResult.WrongResult else CharacterResult.SuccessfullResult(callResult)
+            val result = if (callResult.isNullOrEmpty()) CharacterResult.WrongResult else CharacterResult.SuccessfullResult(
+                callResult.filter { !it.thumbnailPath.contains("image_not_available".toRegex()) })
             emit(result)
         }.flowOn(Dispatchers.IO)
     }

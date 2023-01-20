@@ -2,29 +2,24 @@ package com.manday.marvel.ui.fragments
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.*
 import androidx.navigation.fragment.findNavController
 import com.manday.marvel.R
-import com.manday.marvel.data.models.CharacterEntity
-import com.manday.marvel.navigation.NavigateFromProductToDetailFragment
 import com.manday.marvel.ui.adapters.CharacterAdapter
 import com.manday.marvel.ui.viewmodels.CharactersListViewModel
-import com.manday.coredata.navigation.MotionNavigate
 import com.manday.marvel.databinding.FragmentCharactersListBinding
 import com.manday.marvel.domain.repository.CharacterResult
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import org.koin.java.KoinJavaComponent.inject
+import javax.inject.Inject
 
 
+@AndroidEntryPoint
 class CharactersListFragment : BaseFragment(R.layout.fragment_characters_list) {
 
     private lateinit var adapter: CharacterAdapter
     private val vieModel: CharactersListViewModel by viewModels()
-    private val navigateToDetailFragment: MotionNavigate<CharacterEntity> by inject(
-        NavigateFromProductToDetailFragment::class.java
-    )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -47,6 +42,7 @@ class CharactersListFragment : BaseFragment(R.layout.fragment_characters_list) {
             is CharacterResult.WrongResult -> adapter.submitList(emptyList())
             else -> {}
         }
+
         state.navigateTo?.let {
             val navAction = CharactersListFragmentDirections.actionMainToDetail(it)
             findNavController().navigate(navAction)

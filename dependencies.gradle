@@ -1,7 +1,7 @@
 ext {
     //Versions
     supportLibrary = '26.1.0'
-    kotlin_version = "1.3.72"
+    kotlin_version = "1.5.21"
     core_ktx = "1.3.2"
     app_compat = "1.2.0"
     legacy = "1.0.0"

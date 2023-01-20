@@ -44,3 +44,6 @@ It will show which libraries is being used in this project
 - **View Binding** to interact with views more easily
 - **Data Binding Library** to bind UI components in your layouts to data sources in your app using a declarative format rather than programmatically
 - **Lifecycle-Aware Components** to perform actions in response to a change in the lifecycle status of another component
+
+### DI Framework
+- **Dagger Hilt** to apply depdency injection

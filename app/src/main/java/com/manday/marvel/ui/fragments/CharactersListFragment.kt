@@ -18,12 +18,12 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class CharactersListFragment : BaseFragment(R.layout.fragment_characters_list) {
 
-    private lateinit var adapter: CharacterAdapter
+    @Inject lateinit var adapter: CharacterAdapter
     private val vieModel: CharactersListViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter = CharacterAdapter(vieModel::onCharacterClicked)
+        adapter.listener = vieModel::onCharacterClicked
         val binding = FragmentCharactersListBinding.bind(view).apply {
             charactersRecyclerView.adapter = adapter
         }

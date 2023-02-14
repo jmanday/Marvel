@@ -1,7 +1,7 @@
 package com.manday.marvel.di.modules
 
-import com.manday.marvel.data.datasource.net.NetDataSource
-import com.manday.marvel.data.datasource.net.RetrofitDataSource
+import com.manday.marvel.data.datasource.NetDataSource
+import com.manday.marvel.data.datasource.net.retrofit.RetrofitDataSource
 import com.manday.marvel.domain.repository.CharacterRepository
 import com.manday.marvel.domain.repository.InternalCharacterRepository
 import dagger.Binds

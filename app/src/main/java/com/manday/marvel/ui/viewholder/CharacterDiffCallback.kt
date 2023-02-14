@@ -1,7 +1,7 @@
 package com.manday.marvel.ui.viewholder
 
 import androidx.recyclerview.widget.DiffUtil
-import com.manday.marvel.data.models.CharacterEntity
+import com.manday.marvel.data.datasource.net.models.CharacterEntity
 
 open class CharacterDiffCallback : DiffUtil.ItemCallback<CharacterEntity>() {
 

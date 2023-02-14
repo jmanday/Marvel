@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.manday.marvel.R
-import com.manday.marvel.data.models.CharacterEntity
+import com.manday.marvel.data.datasource.net.models.CharacterEntity
 import com.manday.marvel.ui.viewmodels.CharacterDetailViewModel
 import com.manday.marvel.ui.viewmodels.CharactersListViewModel
 import com.manday.marvel.databinding.FragmentCharacterDetailBinding

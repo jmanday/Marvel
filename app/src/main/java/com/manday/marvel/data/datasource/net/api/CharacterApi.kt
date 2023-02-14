@@ -1,6 +1,6 @@
-package com.manday.marvel.data.datasource.net
+package com.manday.marvel.data.datasource.net.api
 
-import com.manday.marvel.data.models.CharactersResponse
+import com.manday.marvel.data.datasource.net.models.CharactersResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

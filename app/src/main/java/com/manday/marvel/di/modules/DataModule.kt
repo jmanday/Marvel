@@ -1,6 +1,8 @@
 package com.manday.marvel.di.modules
 
+import com.manday.marvel.data.datasource.LocalDataSource
 import com.manday.marvel.data.datasource.NetDataSource
+import com.manday.marvel.data.datasource.db.room.CharacterDao
 import com.manday.marvel.data.datasource.net.retrofit.RetrofitDataSource
 import com.manday.marvel.domain.repository.CharacterRepository
 import com.manday.marvel.domain.repository.InternalCharacterRepository
@@ -34,6 +36,7 @@ internal object ViewModelCharacterModule {
 
     @Provides
     @ViewModelScoped
-    fun provideCharacterRepository(netNetDataSource: NetDataSource): CharacterRepository = InternalCharacterRepository(netNetDataSource)
+    fun provideCharacterRepository(netDataSource: NetDataSource): CharacterRepository
+        = InternalCharacterRepository(netDataSource)
 
 }

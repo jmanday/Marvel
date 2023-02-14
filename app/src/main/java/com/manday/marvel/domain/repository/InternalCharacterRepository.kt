@@ -11,8 +11,7 @@ import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class InternalCharacterRepository @Inject constructor(
-    private val netNetDataSource: NetDataSource,
-    private val roomDataSource: LocalDataSource
+    private val netNetDataSource: NetDataSource
 ) : CharacterRepository {
 
     /*

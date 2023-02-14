@@ -22,9 +22,7 @@ class CharacterDetailFragment : BaseFragment(R.layout.fragment_character_detail)
 
     private val vieModel: CharacterDetailViewModel by viewModels()
 
-    private val character: CharacterEntity by lazy {
-        navArgs.character
-    }
+    private val character: CharacterEntity by lazy { navArgs.character }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

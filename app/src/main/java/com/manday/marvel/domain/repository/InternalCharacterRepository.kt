@@ -1,8 +1,8 @@
 package com.manday.marvel.domain.repository
 
 import com.manday.marvel.BuildConfig
-import com.manday.marvel.data.datasource.db.LocalDataSource
-import com.manday.marvel.data.datasource.net.NetDataSource
+import com.manday.marvel.data.datasource.LocalDataSource
+import com.manday.marvel.data.datasource.NetDataSource
 import com.manday.marvel.domain.mD5Provider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -11,7 +11,9 @@ import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class InternalCharacterRepository @Inject constructor(
-    private val netNetDataSource: NetDataSource) : CharacterRepository {
+    private val netNetDataSource: NetDataSource,
+    private val roomDataSource: LocalDataSource
+) : CharacterRepository {
 
     /*
     override suspend fun getProducts(): Flow<List<Product>?> {

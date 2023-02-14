@@ -9,7 +9,7 @@ import com.manday.marvel.data.datasource.db.models.MarvelCharacter
 @Dao
 interface CharacterDao {
 
-    @Query("SELECT * FROM marvelcharacter")
+    @Query("SELECT * FROM marvel_character_table")
     fun getAll(): List<MarvelCharacter>
 
     @Insert

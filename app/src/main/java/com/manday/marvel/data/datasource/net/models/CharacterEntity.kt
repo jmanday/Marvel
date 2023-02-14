@@ -1,4 +1,4 @@
-package com.manday.marvel.data.models
+package com.manday.marvel.data.datasource.net.models
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

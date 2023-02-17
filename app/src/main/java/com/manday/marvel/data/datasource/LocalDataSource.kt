@@ -5,4 +5,6 @@ import com.manday.marvel.data.datasource.db.models.MarvelCharacter
 interface LocalDataSource {
 
     suspend fun getCharacters(): List<MarvelCharacter>
+
+    suspend fun saveCharacters(marvelCharacterList: List<MarvelCharacter>)
 }

@@ -1,7 +1,7 @@
 package com.manday.marvel.ui.viewmodels
 
 import androidx.lifecycle.*
-import com.manday.marvel.data.models.CharacterEntity
+import com.manday.marvel.data.datasource.net.models.CharacterEntity
 import com.manday.marvel.domain.repository.CharacterRepository
 import com.manday.marvel.ui.fragments.CharacterDetailFragment
 import com.manday.marvel.ui.fragments.CharacterDetailFragmentArgs

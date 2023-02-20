@@ -1,34 +1,12 @@
 package com.manday.marvel
 
 import android.app.Application
-import androidx.room.Room
-import com.manday.marvel.data.datasource.db.ProductDatabase
-import com.manday.marvel.di.appModuleDependencies
+import com.manday.marvel.data.datasource.db.room.MarvelDatabase
 import dagger.hilt.android.HiltAndroidApp
-import org.koin.android.ext.koin.androidContext
-import org.koin.android.ext.koin.androidLogger
-import org.koin.core.context.startKoin
 
 @HiltAndroidApp
 class MarvelCharactersApp : Application() {
 
-    lateinit var db: ProductDatabase
-        private set
+    val database: MarvelDatabase by lazy { MarvelDatabase.getDatabase(this) }
 
-    override fun onCreate() {
-        super.onCreate()
-
-        db = Room.databaseBuilder(
-            this,
-            ProductDatabase::class.java, "product-database"
-        ).build()
-
-        /*
-        startKoin{
-            androidLogger()
-            androidContext(this@MarvelCharactersApp)
-            modules(appModuleDependencies)
-        }
-         */
-    }
 }

@@ -1,4 +1,4 @@
-package com.manday.marvel.data.models
+package com.manday.marvel.data.datasource.net.models
 
 data class CharactersResponse(
     private val code: Int,

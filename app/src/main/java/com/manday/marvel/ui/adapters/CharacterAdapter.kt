@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.manday.core_ui.adapter.BaseListAdapter
 import com.manday.marvel.R
-import com.manday.marvel.data.models.CharacterEntity
+import com.manday.marvel.data.datasource.net.models.CharacterEntity
 import com.manday.marvel.ui.viewholder.CharacterViewHolder
 import com.manday.marvel.ui.viewholder.CharacterDiffCallback
 import javax.inject.Inject

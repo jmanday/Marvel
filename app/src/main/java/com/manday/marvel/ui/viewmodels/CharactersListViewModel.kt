@@ -1,5 +1,6 @@
 package com.manday.marvel.ui.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.*
 
 import com.manday.marvel.data.datasource.net.models.CharacterEntity
@@ -34,7 +35,9 @@ class CharactersListViewModel @Inject constructor(
         _state.value = UIProductListState(loading = true)
 
         viewModelScope.launch {
-            _state.value = UIProductListState(characterResult =  characterRepository.getCharacters().first())
+            characterRepository.getCharacters().collect {
+                _state.value = UIProductListState(characterResult =  it)
+            }
         }
     }
 

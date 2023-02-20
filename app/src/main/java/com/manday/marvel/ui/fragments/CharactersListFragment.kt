@@ -29,14 +29,16 @@ class CharactersListFragment : BaseFragment(R.layout.fragment_characters_list) {
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                vieModel.state.collect { binding.updateUI(it) }
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                vieModel.state.collect {
+                    binding.updateUI(it) }
             }
         }
     }
 
     private fun FragmentCharactersListBinding.updateUI(state: CharactersListViewModel.UIProductListState) {
         progress.visibility = if (state.loading) View.VISIBLE else View.GONE
+
         when (state.characterResult) {
             is CharacterResult.SuccessfullResult -> adapter.submitList(state.characterResult.listCharacterResult)
             is CharacterResult.WrongResult -> adapter.submitList(emptyList())

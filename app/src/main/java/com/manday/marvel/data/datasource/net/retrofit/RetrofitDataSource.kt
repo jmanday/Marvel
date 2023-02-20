@@ -22,7 +22,7 @@ class RetrofitDataSource @Inject constructor() : NetDataSource {
     }
 
     override suspend fun getCharacters(hashCode: String): List<CharacterEntity>? {
-        return remoteServices.getCharacters(BuildConfig.TS, BuildConfig.PUBLIC_KEY, hashCode)
+        return remoteServices.getCharacters(BuildConfig.TS, BuildConfig.PUBLIC_KEY, hashCode = hashCode)
                     .unwrapResponse {
                         this.toCharacterEntityList()
                     }

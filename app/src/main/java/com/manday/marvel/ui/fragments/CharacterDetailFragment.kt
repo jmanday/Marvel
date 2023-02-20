@@ -1,21 +1,15 @@
 package com.manday.marvel.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.*
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
-import com.bumptech.glide.request.RequestOptions
 import com.manday.marvel.R
 import com.manday.marvel.data.datasource.net.models.CharacterEntity
 import com.manday.marvel.ui.viewmodels.CharacterDetailViewModel
-import com.manday.marvel.ui.viewmodels.CharactersListViewModel
 import com.manday.marvel.databinding.FragmentCharacterDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 

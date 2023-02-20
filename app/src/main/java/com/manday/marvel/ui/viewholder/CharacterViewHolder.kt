@@ -2,7 +2,7 @@ package com.manday.marvel.ui.viewholder
 
 import android.view.View
 import com.bumptech.glide.Glide
-import com.manday.marvel.data.models.CharacterEntity
+import com.manday.marvel.data.datasource.net.models.CharacterEntity
 import com.manday.marvel.databinding.ViewItemCharacterBinding
 import com.manday.core_ui.viewholder.BaseViewHolder
 

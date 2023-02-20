@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.manday.marvel.R
-import com.manday.marvel.data.models.CharacterEntity
+import com.manday.marvel.data.datasource.net.models.CharacterEntity
 import com.manday.marvel.ui.viewmodels.CharacterDetailViewModel
 import com.manday.marvel.ui.viewmodels.CharactersListViewModel
 import com.manday.marvel.databinding.FragmentCharacterDetailBinding
@@ -22,9 +22,7 @@ class CharacterDetailFragment : BaseFragment(R.layout.fragment_character_detail)
 
     private val vieModel: CharacterDetailViewModel by viewModels()
 
-    private val character: CharacterEntity by lazy {
-        navArgs.character
-    }
+    private val character: CharacterEntity by lazy { navArgs.character }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

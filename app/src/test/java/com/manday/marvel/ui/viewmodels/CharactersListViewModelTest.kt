@@ -1,7 +1,7 @@
 package com.manday.marvel.ui.viewmodels
 
 import android.app.Application
-import com.manday.marvel.data.models.CharacterEntity
+import com.manday.marvel.data.datasource.net.models.CharacterEntity
 import com.manday.marvel.di.testModule
 import com.manday.marvel.domain.repository.CharacterRepository
 import com.manday.marvel.domain.repository.CharacterResult

@@ -2,6 +2,7 @@ package com.manday.marvel.ui.viewholder
 
 import android.view.View
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.manday.marvel.data.datasource.net.models.CharacterEntity
 import com.manday.marvel.databinding.ViewItemCharacterBinding
 import com.manday.core_ui.viewholder.BaseViewHolder
@@ -13,19 +14,15 @@ class CharacterViewHolder(
     private val binding = ViewItemCharacterBinding.bind(view)
 
     override fun onBind(character: CharacterEntity) {
-        binding.ivFav.setOnClickListener {
-            /*
-            product.selected = !product.selected
-            val drawable = if (product.selected) ContextCompat.getDrawable(itemView.context, R.drawable.ic_favorite_fill_24)
-                            else ContextCompat.getDrawable(itemView.context, R.drawable.ic_favorite_24)
-            it.background = drawable
 
-             */
-        }
         binding.root.setOnClickListener {
             listener(character)
         }
 
-        Glide.with(view.context).load(character.thumbnailPath.plus("/portrait_incredible.jpg")).into(binding.ivCharacter)
+        Glide
+            .with(view.context)
+            .load(character.thumbnailPath.plus("/portrait_incredible.jpg"))
+            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+            .into(binding.ivCharacter)
     }
 }

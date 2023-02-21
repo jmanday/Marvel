@@ -47,10 +47,6 @@ dependencies {
     api lifecycleDependencies.lifecycleViewModel
     api lifecycleDependencies.lifecycleRuntime
 
-    api koinDependencies.core
-    api koinDependencies.android
-    api koinDependencies.javaComp
-
     testImplementation 'junit:junit:4.12'
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

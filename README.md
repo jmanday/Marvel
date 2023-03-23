@@ -47,3 +47,12 @@ It will show which libraries is being used in this project
 
 ### DI Framework
 - **Dagger Hilt** to apply depdency injection
+
+### Testing
+For the testing, as we have different layers we need to test them in a separate way.
+
+#### UI layer 
+In this layer we can test UI components and ViewModel. There we use rules for the Dispatcher and Mockito
+
+### Data layer
+In this layer we test the datasources. We use two kind of datasources, Room as local datasource and Retrofit as remote datasource. We have added tests (instrumenstral test) for Dao component.

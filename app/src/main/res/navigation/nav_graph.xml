@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/main_dest"
-        android:name="com.manday.marvel.ui.fragments.CharactersListFragment"
+        android:name="com.manday.marvel.ui.CharacterList.CharactersListFragment"
         android:label="fragment_product_list"
         tools:layout="@layout/fragment_characters_list" >
         <!--
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/detail_dest"
-        android:name="com.manday.marvel.ui.fragments.CharacterDetailFragment"
+        android:name="com.manday.marvel.ui.CharacterDetail.CharacterDetailFragment"
         android:label="CharacterDetailFragment" >
         <argument
             android:name="character"

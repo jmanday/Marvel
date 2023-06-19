@@ -1,6 +1,5 @@
 package com.manday.marvel.ui.viewmodels
 
-import android.app.Application
 import com.manday.marvel.data.datasource.net.models.CharacterEntity
 import com.manday.marvel.domain.repository.CharacterRepository
 import com.manday.marvel.domain.repository.CharacterResult
@@ -19,7 +18,6 @@ import org.mockito.kotlin.whenever
 @OptIn(ExperimentalCoroutinesApi::class)
 internal class CharactersListViewModelTest {
 
-    private val context: Application = mock(Application::class.java)
     private val mockCharacterRepository = mock(CharacterRepository::class.java)
     private lateinit var charactersListViewModel: CharactersListViewModel
 

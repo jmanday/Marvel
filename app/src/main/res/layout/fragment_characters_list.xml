@@ -7,26 +7,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.manday.marvel.ui.common.MainActivity">
 
-    <!--
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/barLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/colorTransparent"
-        app:elevation="0dp">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:title="@string/text_product_list"
-            app:buttonGravity="center_vertical"
-            style="@style/Toolbar"/>
-    </com.google.android.material.appbar.AppBarLayout>
-    -->
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/charactersRecyclerView"
         android:layout_width="match_parent"
@@ -39,6 +19,14 @@
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:shimmer_recycler_layout="@layout/view_item_character"
         app:spanCount="2" />
+
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/compose_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <ProgressBar
         android:id="@+id/progress"

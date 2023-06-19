@@ -1,7 +1,7 @@
 package com.manday.marvel.ui.viewmodels
 
 import androidx.lifecycle.*
-import com.manday.marvel.ui.fragments.CharacterDetailFragmentArgs
+import com.manday.marvel.ui.CharacterDetail.CharacterDetailFragmentArgs
 import com.manday.marvel.ui.models.ProductDetailModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*

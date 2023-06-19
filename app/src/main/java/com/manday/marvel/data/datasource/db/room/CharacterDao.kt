@@ -17,6 +17,9 @@ interface CharacterDao {
     @Insert (onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(characters: List<MarvelCharacter>)
 
+    @Insert
+    suspend fun insertCharacter(character: MarvelCharacter)
+
     @Delete
     suspend fun delete(character: MarvelCharacter)
 }

@@ -1,7 +1,8 @@
-package com.manday.marvel.ui.fragments
+package com.manday.marvel.ui.CharacterList
 
 import android.os.Bundle
 import android.view.View
+import androidx.compose.material.MaterialTheme
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.*
 import androidx.navigation.fragment.findNavController
@@ -10,6 +11,7 @@ import com.manday.marvel.ui.adapters.CharacterAdapter
 import com.manday.marvel.ui.viewmodels.CharactersListViewModel
 import com.manday.marvel.databinding.FragmentCharactersListBinding
 import com.manday.marvel.domain.repository.CharacterResult
+import com.manday.marvel.ui.fragments.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -24,6 +26,7 @@ class CharactersListFragment : BaseFragment(R.layout.fragment_characters_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapter.listener = vieModel::onCharacterClicked
+
         val binding = FragmentCharactersListBinding.bind(view).apply {
             charactersRecyclerView.adapter = adapter
         }
@@ -31,7 +34,8 @@ class CharactersListFragment : BaseFragment(R.layout.fragment_characters_list) {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 vieModel.state.collect {
-                    binding.updateUI(it) }
+                    binding.updateUI(it)
+                }
             }
         }
     }
@@ -40,7 +44,17 @@ class CharactersListFragment : BaseFragment(R.layout.fragment_characters_list) {
         progress.visibility = if (state.loading) View.VISIBLE else View.GONE
 
         when (state.characterResult) {
-            is CharacterResult.SuccessfullResult -> adapter.submitList(state.characterResult.listCharacterResult)
+            is CharacterResult.SuccessfullResult -> {
+                adapter.submitList(state.characterResult.listCharacterResult)
+                /*
+                this.composeView.setContent {
+                    MaterialTheme {
+                        CharacterListContent(state.characterResult.listCharacterResult)
+                    }
+                }
+
+                 */
+            }
             is CharacterResult.WrongResult -> adapter.submitList(emptyList())
             else -> {}
         }

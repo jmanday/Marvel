@@ -45,15 +45,15 @@ class CharactersListFragment : BaseFragment(R.layout.fragment_characters_list) {
 
         when (state.characterResult) {
             is CharacterResult.SuccessfullResult -> {
-                adapter.submitList(state.characterResult.listCharacterResult)
-                /*
+                //adapter.submitList(state.characterResult.listCharacterResult)
+
                 this.composeView.setContent {
                     MaterialTheme {
                         CharacterListContent(state.characterResult.listCharacterResult)
                     }
                 }
 
-                 */
+
             }
             is CharacterResult.WrongResult -> adapter.submitList(emptyList())
             else -> {}

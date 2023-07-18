@@ -42,6 +42,7 @@ ext {
             lifecycleViewModel  :      "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecyle",
             lifecycleLiveData   :      "androidx.lifecycle:lifecycle-livedata-ktx:$lifecyle",
             lifecycleRuntime    :      "androidx.lifecycle:lifecycle-runtime-ktx:$lifecyle",
+            lifecycleViewModelCompose: "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07"
     ]
 
     dataDependencies = [

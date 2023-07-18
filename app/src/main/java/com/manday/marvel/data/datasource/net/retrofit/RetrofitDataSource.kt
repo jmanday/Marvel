@@ -21,7 +21,7 @@ class RetrofitDataSource @Inject constructor() : NetDataSource {
         remoteServices = RetrofitController.createRequest(BASE_URL)
     }
 
-    override suspend fun getCharacters(hashCode: String): List<CharacterEntity>? {
+    override suspend fun getCharacters(hashCode: String): List<CharacterEntity> {
         return remoteServices.getCharacters(BuildConfig.TS, BuildConfig.PUBLIC_KEY, hashCode = hashCode)
                     .unwrapResponse {
                         this.toCharacterEntityList()

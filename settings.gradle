@@ -3,3 +3,5 @@ include ':core-data'
 include ':core-ui'
 include ':app'
 rootProject.name = "MarvelCharacters"
+include ':data'
+include ':data:character-remote'

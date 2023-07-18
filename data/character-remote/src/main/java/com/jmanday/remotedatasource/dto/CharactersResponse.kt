@@ -1,4 +1,4 @@
-package com.manday.marvel.data.datasource.net.models
+package com.jmanday.remotedatasource.dto
 
 data class CharactersResponse(
     private val code: Int,
@@ -6,7 +6,6 @@ data class CharactersResponse(
     private val copyright: String,
     private val etag: String,
     val data: CharactersData
-
 )
 
 data class CharactersData(
@@ -29,12 +28,3 @@ data class CharacterThumbnail(
     val path: String,
     val extension: String
 )
-
-fun CharactersResponse.toCharacterEntityList() =
-    this.data.results.map {
-        CharacterEntity(
-            name = it.name,
-            description = it.description,
-            thumbnailPath = it.thumbnail.path,
-        )
-    }

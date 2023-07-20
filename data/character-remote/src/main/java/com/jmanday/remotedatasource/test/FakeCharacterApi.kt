@@ -10,5 +10,5 @@ class FakeCharacterApi : CharacterApi {
         apiKey: String,
         limit: Int,
         hashCode: String
-    ): CharactersResponse = characterDto
+    ): CharactersResponse = characterResponseDto
 }

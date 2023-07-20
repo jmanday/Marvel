@@ -12,7 +12,7 @@ val characterDataDto = CharactersData(
 )
 
 
-val characterDto = CharactersResponse(
+val characterResponseDto = CharactersResponse(
     code = 1,
     status = "status",
     copyright = "copyright",

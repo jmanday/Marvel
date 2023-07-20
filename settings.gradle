@@ -1,7 +1,9 @@
+rootProject.name = "MarvelCharacters"
 include ':core-domain'
 include ':core-data'
 include ':core-ui'
 include ':app'
-rootProject.name = "MarvelCharacters"
+include ':domain'
 include ':data'
 include ':data:character-remote'
+include ':domain:character'

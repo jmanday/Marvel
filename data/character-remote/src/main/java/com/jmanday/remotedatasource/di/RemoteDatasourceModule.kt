@@ -41,7 +41,7 @@ object RemoteDatasourceModule {
 
     @Singleton
     @Provides
-    fun provideCharactersApi(
+    fun provideCharacterApi(
         retrofit: Retrofit
     ): CharacterApi = retrofit.create(CharacterApi::class.java)
 }

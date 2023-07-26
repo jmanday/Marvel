@@ -8,8 +8,9 @@ import com.jmanday.domain.repository.CharacterRepository
 import com.jmanday.remotedatasource.api.CharacterApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class InternalCharacterRespository(
+class InternalCharacterRepository @Inject constructor(
     private val api: CharacterApi
 ) : CharacterRepository {
 

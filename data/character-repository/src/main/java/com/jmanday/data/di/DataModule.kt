@@ -1,6 +1,6 @@
 package com.jmanday.data.di
 
-import com.jmanday.data.repository.InternalCharacterRespository
+import com.jmanday.data.repository.InternalCharacterRepository
 import com.jmanday.domain.repository.CharacterRepository
 import dagger.Binds
 import dagger.Module
@@ -13,6 +13,6 @@ interface DataModule {
 
     @Binds
     fun bindCharacterRespository(
-        characterRepository: InternalCharacterRespository
+        characterRepository: InternalCharacterRepository
     ): CharacterRepository
 }

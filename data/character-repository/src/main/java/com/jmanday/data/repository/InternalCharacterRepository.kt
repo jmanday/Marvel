@@ -15,6 +15,7 @@ class InternalCharacterRepository @Inject constructor(
 ) : CharacterRepository {
 
     override suspend fun getCharacters(): Flow<List<Character>>  = flow {
-        api.getCharacters(BuildConfig.TS, BuildConfig.PUBLIC_KEY, hashCode = mD5Provider.getMD5(BuildConfig.HASH_KEY)).toCharacterList()
+        val result = api.getCharacters(BuildConfig.TS, BuildConfig.PUBLIC_KEY, hashCode = mD5Provider.getMD5(BuildConfig.HASH_KEY)).toCharacterList()
+        emit(result)
     }
 }

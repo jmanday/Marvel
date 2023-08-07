@@ -46,6 +46,10 @@ dependencies {
     api(project(":domain:character"))
     implementation(project(":data:character-remote"))
 
+    KotlinDependencies.apply {
+        implementation(kotlinCoroutines)
+    }
+
     DIDependencies.apply {
         implementation(hiltAndroid)
         kapt(dagerHiltCompiler)
@@ -53,7 +57,7 @@ dependencies {
 
     TestDependencies.apply {
         testImplementation(junit)
-        androidTestImplementation(androidJunit)
         androidTestImplementation(androidEspresso)
+        androidTestImplementation(coroutinesTest)
     }
 }

@@ -1,5 +1,4 @@
 rootProject.name = "MarvelCharacters"
-include ':core-domain'
 include ':core-data'
 include ':core-ui'
 include ':app'

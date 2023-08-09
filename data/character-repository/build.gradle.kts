@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
-
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -46,7 +44,7 @@ dependencies {
     api(project(":domain:character"))
     implementation(project(":data:character-remote"))
 
-    KotlinDependencies.apply {
+    KotlinxDependencies.apply {
         implementation(kotlinCoroutines)
     }
 

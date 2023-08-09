@@ -1,4 +1,4 @@
-object KotlinDependencies {
+object KotlinxDependencies {
     object Versions {
         const val coroutineKotlin = "1.6.4"
     }

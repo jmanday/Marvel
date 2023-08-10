@@ -34,6 +34,7 @@ class GetCharacterListUseCaseTest {
 
         val markets = getCharacterListUseCase().first()
 
+        coVerify { mockCharacterRepository.getCharacters() }
         assertTrue(markets.size == 2)
     }
 

@@ -55,7 +55,9 @@ dependencies {
 
     TestDependencies.apply {
         testImplementation(junit)
+        testImplementation(mockk)
         androidTestImplementation(androidEspresso)
+        testImplementation(coroutinesTest)
         androidTestImplementation(coroutinesTest)
     }
 }

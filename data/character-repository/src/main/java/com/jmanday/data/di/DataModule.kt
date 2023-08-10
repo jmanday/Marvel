@@ -12,7 +12,7 @@ import dagger.hilt.components.SingletonComponent
 interface DataModule {
 
     @Binds
-    fun bindCharacterRespository(
+    fun bindCharacterRepository(
         characterRepository: InternalCharacterRepository
     ): CharacterRepository
 }

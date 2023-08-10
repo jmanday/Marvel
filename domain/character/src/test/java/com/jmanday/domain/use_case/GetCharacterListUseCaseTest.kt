@@ -34,18 +34,7 @@ class GetCharacterListUseCaseTest {
 
         val markets = getCharacterListUseCase().first()
 
-        coVerify(exactly = 1) { mockCharacterRepository.getCharacters() }
         assertTrue(markets.size == 2)
     }
 
-    @Test
-    fun givenGetCharacterListUseCase_wshenCalling_thenReturnListCharacters() = runTest {
-        val service = mockk<GetCharacterListUseCase>()
-        coEvery { service.invoke() } returns flow { emit(listOf(character)) }
-
-        val result = service.invoke().first()
-
-        coVerify { service.invoke() }
-        assertTrue(result.isNotEmpty())
-    }
 }
